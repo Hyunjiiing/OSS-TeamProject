@@ -6,7 +6,11 @@ typedef struct stack{
 	int top;
 }stack;
 
-stack init();					
+stack init(){
+stack s = { {0,}, -1 };
+return s;
+}
+				
 
 int is_empty(stack* );
 
