@@ -20,7 +20,12 @@ void pop(stack* s) {
 	else (s->top)--;   
 }
 
-int top(stack* );
+int top(stack* ){
+	if (s->top != -1)
+		return s->data[s->top];
+	
+	return 10;
+}
 
 void push(stack* , int );
 
