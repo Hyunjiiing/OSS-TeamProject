@@ -20,7 +20,7 @@ void pop(stack* s) {
 	else (s->top)--;   
 }
 
-int top(stack* ){
+int top(stack* s){
 	if (s->top != -1)
 		return s->data[s->top];
 	
