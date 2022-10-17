@@ -7,16 +7,17 @@ typedef struct stack{
 }stack;
 
 stack init(){
-stack s = { {0,}, -1 };
-return s;
+	stack s = { {0,}, -1 };
+	return s;
 }
-				
 
-int is_empty(stack* );
+int is_empty(stack* s){
+	return s->top < 0;
+};
 
 void pop(stack* s) {     
-if (is_empty(s) == 1) { return 0; }
-else (s->top)--;   
+	if (is_empty(s) == 1) { return 0; }
+	else (s->top)--;   
 }
 
 int top(stack* );
