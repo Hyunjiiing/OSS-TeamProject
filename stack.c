@@ -14,7 +14,10 @@ return s;
 
 int is_empty(stack* );
 
-void pop(stack* );
+void pop(stack* s) {     
+if (is_empty(s) == 1) { return 0; }
+else (s->top)--;   
+}
 
 int top(stack* );
 
