@@ -27,11 +27,7 @@ int top(stack* s){
 	return 10;
 }
 
-void push(stack* s, int data) {   
-	if (s->top > MAX_SIZE) 
-		return;
-	else s->top++; s->data[s->top] = data;
-}
+void push(stack* , int ); 
 
 int main() {
 	return 0;
