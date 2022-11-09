@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keunalarm/src/components/firestore_event.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -38,9 +39,8 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
 /** 인기 공지사항 ui 만드는 곳 */
   Widget popularAlarm() {
     return Container(
-      child: Center(
-        child: Text('인기 페이지'),
-      ),
+      height: 200,
+      child: fireStoreEvent(),
     );
   }
 
@@ -98,26 +98,30 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
             ],
           ),
         ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.76,
-          child: TabBarView(
-            controller: tabController,
-            children: [
-              Container(
-                child: popularAlarm(),
+        Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.76,
+              child: TabBarView(
+                controller: tabController,
+                children: [
+                  Container(
+                    child: popularAlarm(),
+                  ),
+                  Container(
+                    child: computerEngineeringAlarm(),
+                  ),
+                  Container(
+                    child: softwareCenterAlarm(),
+                  ),
+                  Container(
+                    child: untitledAlarm(),
+                  ),
+                ],
               ),
-              Container(
-                child: computerEngineeringAlarm(),
-              ),
-              Container(
-                child: softwareCenterAlarm(),
-              ),
-              Container(
-                child: untitledAlarm(),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
