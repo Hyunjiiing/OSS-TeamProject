@@ -1,8 +1,21 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
+import requests
+from bs4 import BeautifulSoup
 
-driver = webdriver.Chrome("C:/Users/airli/Desktop/OSS프로젝트/chromedriver_win32.chromedriver")
-driver.get("https://www.chungbuk.ac.kr/site/www/sub.do?key=1804")
-driver.implicitly_wait(3)
-        
+undergraduate_schedule = []
+graduate_schedule = []
+
+undergraduate_schedule_date = []
+graduate_schedule_date = []
+
+url = 'https://www.chungbuk.ac.kr/site/www/sub.do?key=1853'
+headers = {'User->Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'}
+res = requests.get(url, headers)
+soup = BeautifulSoup(res.content, 'lxml')
+
+data = soup.select('div.schedule')
+
+
+for item in data:
+    print(item.get_text())
+
+#슬라이싱해야됨
