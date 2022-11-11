@@ -1,0 +1,51 @@
+// [11/12 할 것]
+
+
+// [0. 그전에 해야할 것] 
+
+// 글자 수(길이)에 따라 width값 자동으로 지정해주는 명령어 찾기 (mediaquery처럼)
+
+// 1. 뉴모피즘 탭바 만들기
+
+// 탭바 대신 listview 컨테이너로 만듦
+// 인덱스 값 관리로 tabbar와 tabbarview기능 구현
+
+// 뉴모피즘 탭바 만들고 밑에 리스트뷰는 그냥 그대로 있던 코드 붙여도 됨
+
+// 참고자료 : https://www.youtube.com/watch?v=XOQ5kHyzwCk
+
+// 2. 뉴모피즘 네비게이션바 만들기
+
+// 기존 네비게이션바 대신 직접 컨테이너를 이용하여 뉴모피즘 네비게이션바 만들 예정(하지만 실패할 수 있으니 1 만들고 푸시하고 만들어보기)
+
+// 인덱스 및 라우팅 관리는 다시 개남 인스타 영상 찾아보고 공부하기
+
+// 뉴모피즘 네비게이션 바 참고자료 : https://www.youtube.com/watch?v=DxUxaHoT8Mk
+// 인덱스 및 라우팅 관리 참고자료 : 개남 인스타
+
+// 3. listtile 각각의 tile마다 눌렀을 때, 각각의 url로 이동하는 것 구현하기
+
+// 참고자료 : https://www.youtube.com/watch?v=uiqCvF5cd_g
+
+// 4. 3번 실패하면 listtile버리고 container 이용해서 디자인하기
+
+// 5. fcm api 이용하여 실시간 데이터 변경 사항에 따라 푸시알림 보내기
+// (이것은 카카오톡 알림처럼 공부가 좀 더 필요)
+
+// 참고자료 : https://firebase.google.com/docs/cloud-messaging/send-message?hl=ko
+
+// 6. ios에서 푸시 알림 실험해보기
+
+// 참고자료 : https://msyu1207.tistory.com/entry/flutter-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1-%EB%B0%8F-iPhone%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%B4%EB%B3%B4%EA%B8%B0for-Mac
+
+
+
+// ---------------------------------
+
+// if ( 6번까지 죽지 않고 11/18일까지 완료했을 때)
+// {
+//	로그인/회원가입 기능 구현
+//	게시판 기능 구현
+//	타학과도 추가
+//	등등
+// }
