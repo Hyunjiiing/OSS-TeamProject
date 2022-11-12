@@ -5,6 +5,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:keunalarm/src/pages/event_page.dart';
 
 class fireStoreEvent extends StatefulWidget {
   const fireStoreEvent({super.key});
@@ -39,10 +41,15 @@ class _fireStoreEventState extends State<fireStoreEvent> {
                     top: 8,
                     bottom: 8,
                   ),
-                  child: ListTile(
-                    // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
-                    title: Text(documentSnapshot['schedule']),
-                    subtitle: Text(documentSnapshot['start_date']),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(eventPage1());
+                    },
+                    child: ListTile(
+                      // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
+                      title: Text(documentSnapshot['schedule']),
+                      subtitle: Text(documentSnapshot['start_date']),
+                    ),
                   ),
                 );
               },

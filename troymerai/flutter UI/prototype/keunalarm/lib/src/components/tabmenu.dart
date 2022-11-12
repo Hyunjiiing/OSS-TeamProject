@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:keunalarm/src/components/firestore_event.dart';
+import 'package:keunalarm/src/pages/alarmpages/popularalarm.dart';
+import 'package:keunalarm/src/pages/alarmpages/softwarecenteralarm.dart';
+import 'package:keunalarm/src/pages/alarmpages/untitledalarm.dart';
+import 'package:keunalarm/src/pages/computerenginerringalarm.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -11,30 +16,69 @@ class tabMenu extends StatefulWidget {
 class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   late TabController tabController;
 
+  List<String> items = [
+    "인기",
+    "컴퓨터 공학과",
+    "소프트웨어 중심 사업단",
+    "미정",
+    "경영학과",
+    "토목공학과",
+    "전자공학과",
+    "경제학과",
+    "심리학과",
+  ];
+
+  List pages = [
+    popularAlarm(),
+    computerEngineeringAlarm(),
+    softwareCenterAlarm(),
+    untitledAlarm(),
+    untitledAlarm(),
+    untitledAlarm(),
+    untitledAlarm(),
+    untitledAlarm(),
+    untitledAlarm(),
+
+    /*
+      popularAlarm(),
+      computerEngineeringAlarm(),
+      softwareCenterAlarm(),
+      untitledAlarm(),
+      */
+  ];
+
+  int current = 0;
+  bool isPressed = false;
+
   @override
   void initState() {
     super.initState();
+    /*
     //tabcontroller의 length에서 안에 들어갈 component의 개수를 지정할 수 있다
     tabController = TabController(length: 4, vsync: this);
+    */
   }
 
   Widget _tabMenuText(String text) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 15),
+    return Container(
+      alignment: Alignment.center,
+      height: 50,
       child: Text(
         text,
         style: TextStyle(fontSize: 15, color: Colors.black),
       ),
     );
   }
-
 /*
-  Widget _tabViewScroll() {
-    return Container(
-        // 공지사항 페이지 ui
-        );
+  Widget pages(pageindex) {
+    switch (pageindex) {
+      case (index == 1):
+        return popularAlarm();
+    }
   }
   */
+
+  /*
 
 /** 인기 공지사항 ui 만드는 곳 */
   Widget popularAlarm() {
@@ -71,11 +115,104 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
     );
   }
 
+  */
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      color: const Color(0xFFE7ECEF),
+      margin: const EdgeInsets.all(5),
+      width: double.infinity,
+      height: double.infinity,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 60,
+            width: double.infinity,
+            child: ListView.builder(
+              //itemCount는 list item의 개수에 맞춰서 listview의 개수를 만들어주는 변수
+              itemCount: items.length,
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (ctx, index) {
+                return GestureDetector(
+                  onTap: () {
+                    setState(
+                      () {
+                        current = index;
+
+                        isPressed = !isPressed;
+                      },
+                    );
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(
+                      milliseconds: 200,
+                    ),
+                    margin: EdgeInsets.fromLTRB(8, 8, 5, 5),
+                    width: 100,
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: current == index ? Colors.white70 : Colors.white54,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: current == index
+                          ? null
+                          : [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(4, 4),
+                                blurRadius: 5,
+                                spreadRadius: 1,
+                              ),
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 5,
+                                spreadRadius: 1,
+                              ),
+                            ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Text(
+                          items[index],
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: current == index
+                                ? Colors.black
+                                : Colors.grey[600],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    pages[current],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+    /*
+    Column(
       children: [
         Container(
+          margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
           // 공지사항 옆으로 넘기면서 카테고리 보기
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.06,
@@ -88,12 +225,13 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
           ),
           child: TabBar(
             indicatorColor: Colors.black,
+            isScrollable: true,
             controller: tabController,
             tabs: [
               // tab에 더 넣고싶으면 tabcontroller의 length 늘리기
               _tabMenuText('인기'),
-              _tabMenuText('컴공'),
-              _tabMenuText('소중단'),
+              _tabMenuText('컴퓨터 공학과'),
+              _tabMenuText('소프트웨어 중심 사업단'),
               _tabMenuText('미정'),
             ],
           ),
@@ -125,5 +263,6 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
         ),
       ],
     );
+    */
   }
 }
