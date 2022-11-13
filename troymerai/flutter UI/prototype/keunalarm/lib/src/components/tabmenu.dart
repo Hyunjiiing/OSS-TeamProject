@@ -120,13 +120,20 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFE7ECEF),
+      color: Colors.white,
       margin: const EdgeInsets.all(5),
       width: double.infinity,
       height: double.infinity,
       child: Column(
         children: [
-          SizedBox(
+          Container(
+            width: double.infinity,
+            height: 10,
+            color: Colors.white,
+            //Color(0xFFE7ECEF),
+          ),
+          Container(
+            color: Colors.white,
             height: 60,
             width: double.infinity,
             child: ListView.builder(
@@ -140,7 +147,6 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                     setState(
                       () {
                         current = index;
-
                         isPressed = !isPressed;
                       },
                     );
@@ -149,25 +155,25 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                     duration: const Duration(
                       milliseconds: 200,
                     ),
-                    margin: EdgeInsets.fromLTRB(8, 8, 5, 5),
+                    margin: EdgeInsets.fromLTRB(10, 10, 7, 7),
                     width: 100,
                     height: 45,
                     decoration: BoxDecoration(
-                      color: current == index ? Colors.white70 : Colors.white54,
+                      color: current == index ? Colors.white : Colors.white54,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: current == index
                           ? null
                           : [
                               BoxShadow(
-                                color: Colors.grey,
+                                color: Colors.grey[400]!,
                                 offset: Offset(4, 4),
-                                blurRadius: 5,
+                                blurRadius: 2,
                                 spreadRadius: 1,
                               ),
                               BoxShadow(
                                 color: Colors.white,
                                 offset: Offset(-4, -4),
-                                blurRadius: 5,
+                                blurRadius: 2,
                                 spreadRadius: 1,
                               ),
                             ],
@@ -195,7 +201,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.73,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

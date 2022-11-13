@@ -5,6 +5,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:keunalarm/src/pages/event_page.dart';
 
@@ -34,21 +35,39 @@ class _fireStoreEventState extends State<fireStoreEvent> {
                     streamSnapshot.data!.docs[index];
                 return
                     /** 이게 공지사항 페이지에 있는 박스 >>> 디자인은 여기서 바꿔야 함 */
-                    Card(
-                  margin: EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 8,
-                    bottom: 8,
+
+                    Container(
+                  margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  width: double.infinity,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    color: Colors.white54,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[400]!,
+                        offset: Offset(4, 4),
+                        blurRadius: 2,
+                        spreadRadius: 1,
+                      ),
+                      BoxShadow(
+                        color: Colors.white,
+                        offset: Offset(-4, -4),
+                        blurRadius: 2,
+                        spreadRadius: 1,
+                      ),
+                    ],
                   ),
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(eventPage1());
-                    },
-                    child: ListTile(
-                      // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
-                      title: Text(documentSnapshot['schedule']),
-                      subtitle: Text(documentSnapshot['start_date']),
+                  child: Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(eventPage1());
+                      },
+                      child: ListTile(
+                        // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
+                        title: Text(documentSnapshot['schedule']),
+                        subtitle: Text(documentSnapshot['start_date']),
+                      ),
                     ),
                   ),
                 );
