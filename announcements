@@ -12,7 +12,7 @@ with open("C:\study\Test.txt", "w") as file:
         file.write(str(URL)+str("\n"))
 
 
-##추가 예정## 
+###추가 예정###
 
 #import firebase_admin
 #from firebase_admin import credentials
