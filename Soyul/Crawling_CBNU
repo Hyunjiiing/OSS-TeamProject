@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup as bs
+
+url='https://www.chungbuk.ac.kr/site/www/boardList.do?boardSeq=113&key=699' # 충북대 학사/장학 첫페이지
+
+res=requests.get(url) 
+
+print(res.status_code) 
+
+html_text = res.text 
+
+html = bs(res.text, 'html.parser') 
