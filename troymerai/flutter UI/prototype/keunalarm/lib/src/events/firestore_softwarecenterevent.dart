@@ -22,6 +22,17 @@ class _firestoreSoftwareCenterEvent
     extends State<firestoreSoftwareCenterEvent> {
   /**파이어베이스 데이터베이스에 저장된 컬렉션 이름을 불러올 수 있게 함 */
   CollectionReference event = FirebaseFirestore.instance.collection('sw7up');
+  bool _hasCallSupport = false;
+  Future<void>? _launched;
+
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +79,7 @@ class _firestoreSoftwareCenterEvent
                         final url = Uri.parse(
                           documentSnapshot['url'],
                         );
-                        if (await canLaunchUrl(url)) {
-                          launchUrl(url);
-                        } else {
-                          print("Can't launch $url");
-                        }
+                        _launchInBrowser(url);
                       },
                       child: ListTile(
                         // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함

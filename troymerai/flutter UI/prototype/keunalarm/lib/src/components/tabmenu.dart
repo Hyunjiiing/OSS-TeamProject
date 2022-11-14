@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:keunalarm/src/components/firestore_event.dart';
@@ -181,7 +182,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                        child: Text(
+                        child: AutoSizeText(
                           items[index],
                           style: TextStyle(
                             fontSize: 15,

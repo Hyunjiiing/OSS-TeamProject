@@ -43,6 +43,7 @@ dependencies:
   flutter_neumorphic: ^3.2.0
   flutter_inset_box_shadow: ^1.0.8
   url_launcher: ^6.1.6
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
