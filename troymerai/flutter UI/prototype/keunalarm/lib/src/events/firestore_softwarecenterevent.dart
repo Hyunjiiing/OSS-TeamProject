@@ -8,17 +8,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:keunalarm/src/pages/event_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class fireStoreEvent extends StatefulWidget {
-  const fireStoreEvent({super.key});
+class firestoreSoftwareCenterEvent extends StatefulWidget {
+  const firestoreSoftwareCenterEvent({super.key});
 
   @override
-  State<fireStoreEvent> createState() => _fireStoreEventState();
+  State<firestoreSoftwareCenterEvent> createState() =>
+      _firestoreSoftwareCenterEvent();
 }
 
-class _fireStoreEventState extends State<fireStoreEvent> {
+class _firestoreSoftwareCenterEvent
+    extends State<firestoreSoftwareCenterEvent> {
   /**파이어베이스 데이터베이스에 저장된 컬렉션 이름을 불러올 수 있게 함 */
-  CollectionReference event = FirebaseFirestore.instance.collection('events');
+  CollectionReference event = FirebaseFirestore.instance.collection('sw7up');
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +63,21 @@ class _fireStoreEventState extends State<fireStoreEvent> {
                   ),
                   child: Expanded(
                     child: GestureDetector(
-                      onTap: () {
-                        Get.to(eventPage1());
+                      onTap: () async {
+                        //Get.to(eventPage1());
+                        final url = Uri.parse(
+                          documentSnapshot['url'],
+                        );
+                        if (await canLaunchUrl(url)) {
+                          launchUrl(url);
+                        } else {
+                          print("Can't launch $url");
+                        }
                       },
                       child: ListTile(
                         // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
-                        title: Text(documentSnapshot['schedule']),
-                        subtitle: Text(documentSnapshot['start_date']),
+                        title: Text(documentSnapshot['title']),
+                        subtitle: Text(documentSnapshot['date']),
                       ),
                     ),
                   ),

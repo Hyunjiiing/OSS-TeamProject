@@ -4,7 +4,7 @@ import 'package:keunalarm/src/components/firestore_event.dart';
 import 'package:keunalarm/src/pages/alarmpages/popularalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/softwarecenteralarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/untitledalarm.dart';
-import 'package:keunalarm/src/pages/computerenginerringalarm.dart';
+import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -120,7 +120,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.grey[300],
       margin: const EdgeInsets.all(5),
       width: double.infinity,
       height: double.infinity,
@@ -129,11 +129,11 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
           Container(
             width: double.infinity,
             height: 10,
-            color: Colors.white,
+            color: Colors.grey[300],
             //Color(0xFFE7ECEF),
           ),
           Container(
-            color: Colors.white,
+            color: Colors.grey[300],
             height: 60,
             width: double.infinity,
             child: ListView.builder(
@@ -165,7 +165,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                           ? null
                           : [
                               BoxShadow(
-                                color: Colors.grey[400]!,
+                                color: Colors.grey[500]!,
                                 offset: Offset(4, 4),
                                 blurRadius: 2,
                                 spreadRadius: 1,
