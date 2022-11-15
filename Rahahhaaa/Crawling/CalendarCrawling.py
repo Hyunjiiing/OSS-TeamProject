@@ -39,6 +39,16 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate("")
+cred = credentials.Certificate("C:/Users/airli/Desktop/OSS프로젝트/크롤링/keunalarm-sample-1-firebase-adminsdk-pp1xh-11efc3b1b8.json")
 firebase_admin.initialize_app(cred)
 firebase_db = firestore.client()
+
+for i in range(len(res_undergraduate['start_date'])):
+    doc = firebase_db.collection('Calendar_undergraduate').document(u'undergraduate%d'%i)
+    doc.set({"start_date":res_undergraduate['start_date'][i],
+             "content":res_undergraduate['content'][i]})
+
+for i in range(len(res_graduate['start_date'])):
+    doc = firebase_db.collection('Calendar_graduate').document(u'graduate%d'%i)
+    doc.set({"start_date":res_graduate['start_date'][i],
+             "content":res_graduate['content'][i]})
