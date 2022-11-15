@@ -6,7 +6,6 @@ res_graduate = {'start_date' : [], 'content' : []}
 
 def slicing(s, mode):
     s = s.split(']')
-    print(s)
     s[0] = s[0].split('~')
     if mode == 0 :
         start_date = s[0][0].split('[')[1].split('(')[0]
@@ -50,7 +49,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate("C:/Users/airli/Desktop/OSS프로젝트/크롤링/keunalarm-sample-1-firebase-adminsdk-pp1xh-11efc3b1b8.json")
+cred = credentials.Certificate("")
 firebase_admin.initialize_app(cred)
 firebase_db = firestore.client()
 
