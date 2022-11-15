@@ -25,10 +25,12 @@ class _firestoreSoftwareCenterEvent
   bool _hasCallSupport = false;
   Future<void>? _launched;
 
-  Future<void> _launchInBrowser(Uri url) async {
+  Future<void> _launchInWebViewOrVC(Uri url) async {
     if (!await launchUrl(
       url,
-      mode: LaunchMode.externalApplication,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'my_header_key': 'my_header_value'}),
     )) {
       throw 'Could not launch $url';
     }
@@ -79,7 +81,7 @@ class _firestoreSoftwareCenterEvent
                         final url = Uri.parse(
                           documentSnapshot['url'],
                         );
-                        _launchInBrowser(url);
+                        _launchInWebViewOrVC(url);
                       },
                       child: ListTile(
                         // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
