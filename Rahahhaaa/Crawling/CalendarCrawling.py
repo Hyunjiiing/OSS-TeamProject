@@ -39,6 +39,6 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate("C:/Users/airli/Desktop/OSS프로젝트/크롤링/calendarcrawlingtest-firebase-adminsdk-pyobm-210a54db1f.jsoncalendarcrawlingtest-firebase-adminsdk-pyobm-210a54db1f")
+cred = credentials.Certificate("")
 firebase_admin.initialize_app(cred)
 firebase_db = firestore.client()
