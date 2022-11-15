@@ -6,12 +6,23 @@ res_graduate = {'start_date' : [], 'content' : []}
 
 def slicing(s, mode):
     s = s.split(']')
+    print(s)
     s[0] = s[0].split('~')
-    if mode == 0 :    
-        res_undergraduate['start_date'].append(s[0][0].split('[')[1])
+    if mode == 0 :
+        start_date = s[0][0].split('[')[1].split('(')[0]
+        if len(start_date) == 6:
+            start_date = '2022.' + start_date
+        elif len(start_date) == 5:
+            start_date = '2022.0' + start_date
+        res_undergraduate['start_date'].append(start_date)
         res_undergraduate['content'].append(s[1])
     else:
-        res_graduate['start_date'].append(s[0][0].split('[')[1])
+        start_date = s[0][0].split('[')[1].split('(')[0]
+        if len(start_date) == 6:
+            start_date = '2022.' + start_date
+        elif len(start_date) == 5:
+            start_date = '2022.0' + start_date
+        res_graduate['start_date'].append(start_date)
         res_graduate['content'].append(s[1])
     
 
