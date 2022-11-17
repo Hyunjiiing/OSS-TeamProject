@@ -160,7 +160,8 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                     width: 100,
                     height: 45,
                     decoration: BoxDecoration(
-                      color: current == index ? Colors.white : Colors.white54,
+                      color:
+                          current == index ? Color(0xffD3C9B5) : Colors.white54,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: current == index
                           ? null

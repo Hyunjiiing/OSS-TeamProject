@@ -27,20 +27,13 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: Center(
-          child: Text(
-            '큰알람',
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
+        centerTitle: true,
+        //앱바에 디자인할 공간
+        title: Container(
+          width: MediaQuery.of(context).size.width,
+          height: double.infinity,
+          color: Colors.black,
         ),
-        actions: [
-          Icon(
-            CupertinoIcons.bars,
-            color: Colors.black,
-          )
-        ],
       ),
       body: Column(
         children: [

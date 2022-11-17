@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:keunalarm/src/components/neumorphic_bottom_button.dart';
 import 'package:keunalarm/src/controller/bottom_nav_controller.dart';
+import 'package:keunalarm/src/pages/clubpage.dart';
 import 'package:keunalarm/src/pages/home.dart';
 
 class App extends GetView<BottomNavController> {
@@ -56,6 +57,7 @@ class App extends GetView<BottomNavController> {
               Container(
                 child: Center(child: Text('CALENDER')),
               ),
+              clubPage(),
               Container(
                 child: Center(child: Text('MYPAGE')),
               ),
@@ -101,6 +103,16 @@ class App extends GetView<BottomNavController> {
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.calendar,
+                        color: Colors.black,
+                      ),
+                      label: ""),
+                  BottomNavigationBarItem(
+                      icon: Icon(
+                        CupertinoIcons.person_2_square_stack,
+                        //color: Colors.black,
+                      ),
+                      activeIcon: Icon(
+                        CupertinoIcons.person_2_square_stack,
                         color: Colors.black,
                       ),
                       label: ""),
