@@ -1,6 +1,9 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import re
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
 
 i = 1
 
@@ -11,8 +14,8 @@ with open("E:\Study_folder\Test.txt", "w") as file:
     for anchor in bs0bject.body.select("td.subject"):
         Text = (str(i) + str(": ") + anchor.text.strip())
         URL = (anchor.a['href'].strip())
-        #Writer = (bs0bject.tbody.select("span", {"style":"white-space:nowrap;"}).strip())
-       ## re_URL = URL.repalce("a","b",10) #문자열 값 제거하는 건데 이미 strip를 사용하여 쓸모가 없음
+        ##Writer = (bs0bject.tbody.select("span", {"style":"white-space:nowrap;"}).strip())
+        ##re_URL = URL.repalce("a","b",10) #문자열 값 제거하는 건데 이미 strip를 사용하여 쓸모가 없음
         i = i + 1
         print(str(Text) + str("\n") + str(URL))
         file.write(str(Text) + str("\n") + str(URL))
@@ -27,6 +30,14 @@ with open("E:\Study_folder\Test2.txt", "w") as file:
     for meta in bs0bject.body.select("td",{"colspan":"2"}):
         print(meta.text.strip())
 
+
+# Fetch the service account key JSON file contents
+cred = credentials.Certificate('')
+# Initialize the app with a service account, granting admin privileges
+firebase_admin.initialize_app(cred, {'databaseURL': "URL to database"})
+
+ref = db.reference('Database reference')
+print(ref.get())
 
 
 #import firebase_admin
