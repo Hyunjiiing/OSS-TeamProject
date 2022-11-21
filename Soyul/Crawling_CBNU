@@ -3,6 +3,8 @@ import requests
 import pandas as pd
 import sys
 import io
+import json
+from firebase_admin import credentials
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
