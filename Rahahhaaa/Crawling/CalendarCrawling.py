@@ -1,28 +1,41 @@
 import requests
 from bs4 import BeautifulSoup
+import datetime
+date_format = '%Y.%m.%d.'
 
 res_undergraduate = {'start_date' : [], 'content' : []}
 res_graduate = {'start_date' : [], 'content' : []}
 
 def slicing(s, mode):
+    res_undergraduate['content'].append(s)
     s = s.split(']')
     s[0] = s[0].split('~')
+    start_date = s[0][0].split('[')[1].split('(')[0]
+    if start_date[-1] != '.':
+        start_date = start_date + '.'
+        
     if mode == 0 :
-        start_date = s[0][0].split('[')[1].split('(')[0]
         if len(start_date) == 6:
             start_date = '2022.' + start_date
-        elif len(start_date) == 5:
+            
+        elif len(start_date) <= 5:
             start_date = '2022.0' + start_date
-        res_undergraduate['start_date'].append(start_date)
-        res_undergraduate['content'].append(s[1])
+        print(start_date)
+        dt = datetime.datetime.strptime(start_date,date_format)
+        res_undergraduate['start_date'].append(dt)
+        
     else:
-        start_date = s[0][0].split('[')[1].split('(')[0]
+        res_graduate['content'].append(s)
         if len(start_date) == 6:
             start_date = '2022.' + start_date
-        elif len(start_date) == 5:
+            if start_date[5] != 0:
+                start_date = start_date[:5] + '0' + start_date[6:]
+        elif len(start_date) <= 5:
             start_date = '2022.0' + start_date
-        res_graduate['start_date'].append(start_date)
-        res_graduate['content'].append(s[1])
+        print(start_date)
+        dt = datetime.datetime.strptime(start_date,date_format)
+        res_graduate['start_date'].append(dt)
+        
     
 
 url = 'https://www.chungbuk.ac.kr/site/www/sub.do?key=1853'
@@ -43,6 +56,9 @@ for item in data:
             mode = 1
         elif text != '':
             slicing(text, mode)
+
+print(res_undergraduate['start_date'][0])
+print(res_undergraduate['content'][0])
 
 #파이어베이스 연동
 import firebase_admin
