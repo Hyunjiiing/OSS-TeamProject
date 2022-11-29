@@ -3,20 +3,21 @@ from bs4 import BeautifulSoup
 from array import array #배열 선언
 import re
 
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-import time
+#from selenium import webdriver
+#from webdriver_manager.chrome import ChromeDriverManager
+#from selenium.webdriver.chrome.service import Service
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.common.keys import Keys
+#from firebase_admin import db
+#import time
 
-import firebase_admin
-from firebase_admin import credentials
+#import firebase_admin
+#from firebase_admin import credentials
 
-cred = credentials.Certificate("")
-firebase_admin.initialize_app(cred)
+#cred = credentials.Certificate("")
+#firebase_admin.initialize_app(cred)
 
-from firebase_admin import firestore
+#from firebase_admin import firestore
 
 
 i = 1
@@ -26,19 +27,28 @@ i = 1
 html = urlopen("https://www.chungbuk.ac.kr/site/www/boardList.do?boardSeq=112&key=698")
 bs0bject = BeautifulSoup(html, "html.parser")
 
-with open("E:\Study_folder\Test.txt", "w") as file:
+tr_text = []
+with open("E:\Study_folder\Text.txt", "w") as file:
     for link in bs0bject.body.select("td"):
-        tr_text = link.text.strip()
-        file.write(str(tr_text) + str("\n"))
-        #print(str(tr_text))
+        tr_text.append(str(link.text.strip()))
+print(str(tr_text))
+
+score_list = []
+def croll_score() : #정규 표현식 해보는 중 ##오류 발생중##
+    for score in bs0bject.find_all('td'):
+        score_list.append(int(re.findall('\d+', str(score.split()))[2]))
+print(score_list)
+
 
 j = 0
-f = open("E:\Study_folder\Test.txt", "r")
-data = str(f.read().split())
-print(data)
-f.close()
+#f = open("E:\Study_folder\Text.txt", "r")
+#data = str(f.read().split())
+#print(data)
+#f.close()
 
-db = firestore.client()
+#print(data)
+
+#db = firestore.client()
 
 res = {'title': [], 'date': [], 'url': []}
 
@@ -46,15 +56,19 @@ res = {'title': [], 'date': [], 'url': []}
 for anchor in bs0bject.body.select("td.subject"):
     Text = str(str(i) + str(": ") + anchor.text.strip())
     res['title'].append(Text)
-    i = i + 1
     URL = str(anchor.a['href'].strip())
     res['url'].append(URL)
-    print(str(Text) + str("\n") + str(URL) + str("\n"))
-    
-for size in range(i):
-    doc_ref = db.collection(u'Notice').document(u'%d' % size)
-    doc_ref.set({'title': res['title'][i], 
-                'url': res['url'][i]})
+    i = i + 1
+
+for j in range(0, i - 1):
+    #print(str(res['title'][j]) + str("\n") + str(res['url'][j]) + str("\n"))
+    print(res['title'][j] + res['url'][j]) ###성공###
+    #print(inx, value)
+
+#for size in range(i):
+#    doc_ref = db.collection(u'Notice').document(u'%d' % size)
+#    doc_ref.set({'title': res['title'][i], 
+#                'url': res['url'][i]})
 
         ##Writer = (bs0bject.tbody.select("span", {"style":"white-space:nowrap;"}).strip())
         ##re_URL = URL.repalce("a","b",10) #문자열 값 제거하는 건데 이미 strip를 사용하여 쓸모가 없음
