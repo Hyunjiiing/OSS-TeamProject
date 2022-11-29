@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keunalarm/src/components/firestore_event.dart';
 
 class computerEngineeringAlarm extends StatefulWidget {
   const computerEngineeringAlarm({super.key});
@@ -11,12 +12,13 @@ class computerEngineeringAlarm extends StatefulWidget {
 class _computerEngineeringAlarmState extends State<computerEngineeringAlarm> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
+    return Container();
+    /*
+      Center(
         child: Text(
           '컴공페이지',
         ),
       ),
-    );
+      */
   }
 }
