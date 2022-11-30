@@ -60,3 +60,21 @@ for i in range(len(title)):
         "date":date[2+4*i],
     })
 
+#작성일 형식 바꾸기(yyyy-mm-dd => yyyy.mm.dd)
+
+# date_real=[]
+
+# for i in range(len(title)):
+#     date_real.append(date[2+4*i])
+    
+# for i in date_real:
+#     table=str.maketrans('-','.')
+#     'i'.translate(table)
+
+# for i in range(len(title)):
+#     document=firebase_database.collection('ComputerEngineering_notice').document('no.%d'%i)
+#     document.set({
+#         "title":title[i],
+#         "link":link[i],
+#         "date":date_real[i],
+#     })
