@@ -6,6 +6,7 @@ import 'package:keunalarm/src/pages/alarmpages/popularalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/softwarecenteralarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/untitledalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
+import 'package:keunalarm/src/pages/testpage.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -19,6 +20,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
 
   List<String> items = [
     "인기",
+    "테스트",
     "컴퓨터 공학과",
     "소프트웨어 중심 사업단",
     "미정",
@@ -31,7 +33,8 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
 
   List pages = [
     popularAlarm(),
-    computerEngineeringAlarm(),
+    TestPage(),
+    popularAlarm(),
     softwareCenterAlarm(),
     untitledAlarm(),
     untitledAlarm(),

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:keunalarm/src/components/neumorphic_bottom_button.dart';
 import 'package:keunalarm/src/controller/bottom_nav_controller.dart';
+import 'package:keunalarm/src/pages/calender_page.dart/calenderpage.dart';
 import 'package:keunalarm/src/pages/clubpage.dart';
 import 'package:keunalarm/src/pages/home.dart';
+import 'package:keunalarm/src/pages/mainpage.dart';
 
 class App extends GetView<BottomNavController> {
   const App({super.key});
@@ -53,10 +55,8 @@ class App extends GetView<BottomNavController> {
           body: IndexedStack(
             index: controller.pageIndex.value,
             children: [
-              Home(),
-              Container(
-                child: Center(child: Text('CALENDER')),
-              ),
+              MainPage(),
+              TableCalendarScreen(),
               clubPage(),
               Container(
                 child: Center(child: Text('MYPAGE')),

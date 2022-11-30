@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:keunalarm/src/components/firestore_event.dart';
 
 class popularAlarm extends StatefulWidget {
-  const popularAlarm({super.key});
-
+  popularAlarm({super.key});
   @override
   State<popularAlarm> createState() => _popularAlarmState();
 }
