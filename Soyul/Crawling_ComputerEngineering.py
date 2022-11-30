@@ -16,30 +16,27 @@ date=[]
 title=[]
 link=[]
 
-url='https://computer.chungbuk.ac.kr/bbs/bbs.php?db=notice&search=&searchKey=&category=0&pgID=ID12415888101&page=1' 
-res=requests.get(url) 
+for page_num in range(1):
+    url=f'https://computer.chungbuk.ac.kr/bbs/bbs.php?db=notice&search=&searchKey=&category=0&pgID=ID12415888101&page={page_num+1}' 
+    res=requests.get(url) 
 
-soup=bs(res.text,"html.parser")
+    soup=bs(res.text,"html.parser")
 
-date_raw=soup.body.select("td.body_num")
-cbnu_raw=soup.body.select("td.body_bold")
+    date_raw=soup.body.select("td.body_num")
+    cbnu_raw=soup.body.select("td.body_bold")
 
-#작성일
-for i in date_raw:
-    raw=i.get_text()
-    date.append(clean_text(raw))
+    #작성일
+    for i in date_raw:
+        raw=i.get_text()
+        date.append(clean_text(raw))
 
-#제목
-for i in cbnu_raw:
-    title_raw=i.a.get_text()
-    title.append(clean_text(title_raw))
+    #제목
+    for i in cbnu_raw:
+        title_raw=i.a.get_text()
+        title.append(clean_text(title_raw))
 
-#링크
-for i in cbnu_raw:
-    link_raw=i.a["href"]
-    link_raw=link_raw[1:]
-    link.append("https://computer.chungbuk.ac.kr/"+link_raw)
-
-print(date)
-print(link)
-print(title)
+    #링크
+    for i in cbnu_raw:
+        link_raw=i.a["href"]
+        link_raw=link_raw[1:]
+        link.append("https://computer.chungbuk.ac.kr/"+link_raw)
