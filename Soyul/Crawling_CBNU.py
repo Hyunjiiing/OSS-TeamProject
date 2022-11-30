@@ -1,41 +1,30 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 import requests
-import pandas as pd
-import sys
-import io
 import json
 from firebase_admin import credentials
+import sys
+import io
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
-title_and_link_result = []
-day = []
+# result={'title':[], 'date':[], 'link':[]}
 
-for page_num in range(3): #숫자-페이지수(전체 페이지수 420)
+url='' 
 
-    url =f'https://www.chungbuk.ac.kr/site/www/boardList.do?page={page_num+1}&boardSeq=113&key=699'
+res=requests.get(url) #목표로 하는 웹페이지의 html을 requests 패키지를 이용하며 받아 옴
 
-    response = requests.get(url)
+soup=bs(res.text,"lxml") #가져온 html 문서 전체를 beautifulsoup4 패키지를 이용하여 파싱(parsing)함
 
-    soup = BeautifulSoup(response.text, 'html.parser')
-    title_link = soup.select('div > div > div > div > form > table > tbody > tr > td > a  ')
-    day = soup.select('div > div > div > div > form > table > tbody > tr > td ')
+cbnu=soup.find_all("td",attrs={"class":"title"})
 
-    for row in day:
-        day.append(row)
-    
+for i in cbnu:
+    title=i.a.get_text()
+    link=i.a["href"]
+    print(title)
 
-    for row in title_link:
-        title_and_link_result.append(row)
+time=soup.find_all("td",attrs={"class":"time"})
 
-
-
-day_result = []
-print(day[5])
-for row in day:
-    day_result.append(row[5])
-    
-
-print(title_and_link_result[0])
-print(day_result)
+for i in time:
+    date=i.get_text()
+    print(date)
