@@ -4,11 +4,22 @@ import json
 from firebase_admin import credentials
 import sys
 import io
+import re #정규표현식으로 없애고 dict에 넣어 #탭 없으면 그대로니까 경우 나눌 필요 없다.
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
 
 # result={'title':[], 'date':[], 'link':[]}
+
+# def clean_text(text):
+#     cleaned_text = re.sub('[a-zA-Z]', '', text)
+#     cleaned_text = re.sub('[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]',
+#                           '', cleaned_text)
+#     return cleaned_text
+
+def clean_text(text):
+    cleaned_text = re.sub(r'[\t]', '', text)
+    return cleaned_text
 
 for page_num in range(3):
     url=f'https://ece.cbnu.ac.kr/index.php?mid=ece0602&page={page_num+1}' 
@@ -19,16 +30,17 @@ for page_num in range(3):
     ece=soup.find_all("td",attrs={"class":"title"})
 
     for i in ece:
-        title=i.a.get_text()
+        title_semi=i.a.get_text()
+        title=clean_text(title_semi)
         link=i.a["href"]
-        print(title)
-        print(link)
+        print(title) #'특수문자 제거하는 법' 검색
+        # print(link)
 
     time=soup.find_all("td",attrs={"class":"time"})
 
     for i in time:
         date=i.get_text()
-        print(date)
+        # print(date)
 
 
 # url='https://ece.cbnu.ac.kr/index.php?mid=ece0602&page=1' 
