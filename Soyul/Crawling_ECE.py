@@ -25,7 +25,7 @@ for page_num in range(3):
     soup=bs(res.text,"lxml") #가져온 html 문서 전체를 beautifulsoup4 패키지를 이용하여 파싱(parsing)함
 
     ece=soup.find_all("td",attrs={"class":"title"})
--m
+
     for i in ece:
         title_semi=i.a.get_text()
         title_real=clean_text(title_semi)
