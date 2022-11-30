@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup as bs
 import requests
 import json
-from firebase_admin import credentials
 import sys
 import io
 import re #정규표현식으로 없애고 dict에 넣어 #탭 없으면 그대로니까 경우 나눌 필요 없다.
@@ -37,4 +36,22 @@ for page_num in range(3):
         result['date'].append(date_semi)
 
 
-print(result['title'][0], result['link'][0], result['date'][0])
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase_admin import firestore
+
+
+cred = credentials.Certificate('keunalarm-sample-1-firebase-adminsdk-pp1xh-9ce545d345.json')
+firebase_admin.initialize_app(cred)
+
+firebase_database = firestore.client()
+
+for i in range(len(result['title'])):
+    document=firebase_database.collection('ECE_notice').document('no.%d'%i)
+    document.set({
+        "date":result['title'][i],
+        "link":result['link'],
+        "date":result['date']
+    })
+
