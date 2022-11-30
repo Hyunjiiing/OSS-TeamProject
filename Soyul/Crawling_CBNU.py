@@ -53,7 +53,5 @@ firebase_admin.initialize_app(cred)
 
 firebase_database = firestore.client()
 
-for i in range(len(title))):
-
 
 
