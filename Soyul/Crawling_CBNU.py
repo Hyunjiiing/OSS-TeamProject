@@ -42,5 +42,18 @@ for page_num in range(3):
         link.append("https://www.chungbuk.ac.kr/site/www"+link_raw)
 
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase_admin import firestore
+
+cred = credentials.Certificate("C:/firebase/key.json")
+
+firebase_admin.initialize_app(cred)
+
+firebase_database = firestore.client()
+
+for i in range(len(title))):
+
 
 
