@@ -40,3 +40,23 @@ for page_num in range(1):
         link_raw=i.a["href"]
         link_raw=link_raw[1:]
         link.append("https://computer.chungbuk.ac.kr/"+link_raw)
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase_admin import firestore
+
+cred = credentials.Certificate("C:/firebase/key.json")
+
+firebase_admin.initialize_app(cred)
+
+firebase_database = firestore.client()
+
+for i in range(len(title)):
+    document=firebase_database.collection('ComputerEngineering_notice').document('no.%d'%i)
+    document.set({
+        "title":title[i],
+        "link":link[i],
+        "date":date[2+4*i],
+    })
+
