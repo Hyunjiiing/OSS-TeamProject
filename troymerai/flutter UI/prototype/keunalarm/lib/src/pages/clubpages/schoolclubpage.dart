@@ -14,6 +14,12 @@ class schoolClubPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        leadingWidth: 0,
+        title: Center(
+            child: Text(
+          '중앙 동아리 목록',
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        )),
       ),
       body: StreamBuilder(
           stream: club.snapshots(),
@@ -28,9 +34,196 @@ class schoolClubPage extends StatelessWidget {
                     margin: EdgeInsets.all(8),
                     width: double.infinity,
                     height: 200,
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey[500]!,
+                            offset: Offset(4, 4),
+                            blurRadius: 2,
+                          ),
+                          BoxShadow(
+                            color: Colors.grey[500]!,
+                            offset: Offset(-4, -4),
+                            blurRadius: 2,
+                          ),
+                        ]),
                     child: Expanded(
-                      child: Row(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('동아리명')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['동아리명'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('대표학생')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['대표학생'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('목표')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['목표'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('순서')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['순서'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('지도교수 성명')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['지도교수 성명'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('지도교수 학과')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['지도교수 학과'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.2,
+                                height: 25,
+                                child: Center(child: AutoSizeText('회원수')),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.73,
+                                height: 25,
+                                child: AutoSizeText(
+                                  documentSnapshot['회원수'],
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      /*
+                      Row(
                         children: [
                           Column(
                             children: [
@@ -252,6 +445,7 @@ class schoolClubPage extends StatelessWidget {
                           ),
                         ],
                       ),
+                      */
                     ),
                   );
                 },

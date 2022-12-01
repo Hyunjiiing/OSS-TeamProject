@@ -8,6 +8,8 @@ import 'package:keunalarm/src/pages/alarmpages/untitledalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
 import 'package:keunalarm/src/pages/testpage.dart';
 
+import '../pages/alarmpages/CBNUscholarshipalarm.dart';
+
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
 
@@ -24,7 +26,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
     "컴퓨터 공학과",
     "소프트웨어 중심 사업단",
     "미정",
-    "경영학과",
+    "CBNU 장학",
     "토목공학과",
     "전자공학과",
     "경제학과",
@@ -34,10 +36,10 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   List pages = [
     popularAlarm(),
     TestPage(),
-    popularAlarm(),
+    computerEngineeringAlarm(),
     softwareCenterAlarm(),
     untitledAlarm(),
-    untitledAlarm(),
+    CBNUScholarshipAlarm(),
     untitledAlarm(),
     untitledAlarm(),
     untitledAlarm(),
