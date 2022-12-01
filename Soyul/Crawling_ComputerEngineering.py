@@ -16,7 +16,7 @@ date=[]
 title=[]
 link=[]
 
-for page_num in range(2):
+for page_num in range(45):
     url=f'https://computer.chungbuk.ac.kr/bbs/bbs.php?db=notice&search=&searchKey=&category=0&pgID=ID12415888101&page={page_num+1}' 
     res=requests.get(url) 
 
@@ -43,6 +43,7 @@ for page_num in range(2):
         link.append("https://computer.chungbuk.ac.kr/"+link_raw)
 
 
+
 #작성일 형식 바꾸기(yyyy-mm-dd => yyyy.mm.dd)
 date_real=[] # 날짜만 담기
 date_default=[] #형식 변환한 data 담기(yyyy-mm-dd => yyyy.mm.dd)
@@ -55,21 +56,23 @@ for i in date_real:
     i=i.translate(table)
     date_default.append(i)
 
-# import firebase_admin
-# from firebase_admin import credentials
-# from firebase_admin import db
-# from firebase_admin import firestore
 
-# cred = credentials.Certificate("C:/firebase/key.json")
 
-# firebase_admin.initialize_app(cred)
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+from firebase_admin import firestore
 
-# firebase_database = firestore.client()
+cred = credentials.Certificate("C:/firebase/key.json")
 
-# for i in range(len(title)):
-#     document=firebase_database.collection('ComputerEngineering_notice').document('no.%d'%i)
-#     document.set({
-#         "title":title[i],
-#         "link":link[i],
-#         "date":date_real[i],
-#     })
+firebase_admin.initialize_app(cred)
+
+firebase_database = firestore.client()
+
+for i in range(len(title)):
+    document=firebase_database.collection('ComputerEngineering_notice').document('no.%d'%i)
+    document.set({
+        "title":title[i],
+        "link":link[i],
+        "date":date_default[i],
+    })
