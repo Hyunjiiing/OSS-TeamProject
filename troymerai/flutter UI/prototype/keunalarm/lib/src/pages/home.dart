@@ -23,20 +23,29 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       // 여기서 appbar 없애고 그냥 body에 몰빵해서 appbar느낌으로 ui 구현하면 됨
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        //앱바에 디자인할 공간
-        title: Container(
-          width: MediaQuery.of(context).size.width,
-          height: double.infinity,
-          color: Colors.black,
-        ),
-      ),
+
       body: Column(
         children: [
+          Container(
+            width: double.infinity,
+            height: 50,
+            color: Colors.grey[300],
+          ),
+          Container(
+            width: double.infinity,
+            height: 40,
+            color: Colors.grey[300],
+            child: Center(
+              child: Text(
+                '공지사항 페이지',
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ),
           Expanded(child: tabMenu()),
           //_tabMenu(),
           //_tabView(),

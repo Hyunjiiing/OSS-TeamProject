@@ -9,6 +9,7 @@ import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
 import 'package:keunalarm/src/pages/testpage.dart';
 
 import '../pages/alarmpages/CBNUscholarshipalarm.dart';
+import '../pages/alarmpages/ecealarm.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -25,7 +26,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
     "테스트",
     "컴퓨터 공학과",
     "소프트웨어 중심 사업단",
-    "미정",
+    "전자정보대학",
     "CBNU 장학",
     "토목공학과",
     "전자공학과",
@@ -38,7 +39,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
     TestPage(),
     computerEngineeringAlarm(),
     softwareCenterAlarm(),
-    untitledAlarm(),
+    eceAlarm(),
     CBNUScholarshipAlarm(),
     untitledAlarm(),
     untitledAlarm(),
@@ -75,53 +76,6 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
       ),
     );
   }
-/*
-  Widget pages(pageindex) {
-    switch (pageindex) {
-      case (index == 1):
-        return popularAlarm();
-    }
-  }
-  */
-
-  /*
-
-/** 인기 공지사항 ui 만드는 곳 */
-  Widget popularAlarm() {
-    return Container(
-      height: 200,
-      child: fireStoreEvent(),
-    );
-  }
-
-/** 컴공 공지사항 ui 만드는 곳 */
-  Widget computerEngineeringAlarm() {
-    return Container(
-      child: Center(
-        child: Text('컴공 페이지'),
-      ),
-    );
-  }
-
-/** 소중단 공지사항 ui 만드는 곳 */
-  Widget softwareCenterAlarm() {
-    return Container(
-      child: Center(
-        child: Text('소중단 페이지'),
-      ),
-    );
-  }
-
-/** 미정 공지사항 ui 만드는 곳 */
-  Widget untitledAlarm() {
-    return Container(
-      child: Center(
-        child: Text('미정 페이지'),
-      ),
-    );
-  }
-
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -207,6 +161,12 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
           Column(
             children: [
               Container(
+                width: double.infinity,
+                height: 10,
+                color: Colors.grey[300],
+                //Color(0xFFE7ECEF),
+              ),
+              Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.73,
                 child: Column(
@@ -221,61 +181,5 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
         ],
       ),
     );
-    /*
-    Column(
-      children: [
-        Container(
-          margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-          // 공지사항 옆으로 넘기면서 카테고리 보기
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.06,
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: Color(0xffe4e4e4),
-              ),
-            ),
-          ),
-          child: TabBar(
-            indicatorColor: Colors.black,
-            isScrollable: true,
-            controller: tabController,
-            tabs: [
-              // tab에 더 넣고싶으면 tabcontroller의 length 늘리기
-              _tabMenuText('인기'),
-              _tabMenuText('컴퓨터 공학과'),
-              _tabMenuText('소프트웨어 중심 사업단'),
-              _tabMenuText('미정'),
-            ],
-          ),
-        ),
-        Column(
-          children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.76,
-              child: TabBarView(
-                controller: tabController,
-                children: [
-                  Container(
-                    child: popularAlarm(),
-                  ),
-                  Container(
-                    child: computerEngineeringAlarm(),
-                  ),
-                  Container(
-                    child: softwareCenterAlarm(),
-                  ),
-                  Container(
-                    child: untitledAlarm(),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-    */
   }
 }

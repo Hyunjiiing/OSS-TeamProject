@@ -14,7 +14,7 @@ class _CBNUScholarshipAlarmState extends State<CBNUScholarshipAlarm> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.grey[300],
-      height: MediaQuery.of(context).size.height * 0.7,
+      height: MediaQuery.of(context).size.height * 0.73,
       child: firestoreCBNUScholarshipEvent(),
     );
   }
