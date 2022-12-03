@@ -17,6 +17,7 @@ def clean_text(text):
 date=[]
 title=[]
 link=[]
+
 for page_num in range(3):
     url=f"https://www.chungbuk.ac.kr/site/www/boardList.do?page={1+page_num}&boardSeq=112&key=698"
     res=requests.get(url)
@@ -45,11 +46,16 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import firestore
 
-# #firebase_database 인징 및 앱 초기화
-# cred = credentials.Certificate("keunalarm-sample-1-firebase-adminsdk-pp1xh-2693095a20.json")
-# firebase_admin.initialize_app(cred)
-# db = firestore.client()
+cred = credentials.Certificate("C:/firebase/key.json")
 
-# for j in range(0, i):
-#     doc_ref = db.collection(u'Notice').document(u'%d' % j)
-#     doc_ref.set({u'title': res['title'][j], u'date' : date[5+6*i], u'url': res['url'][j]})
+firebase_admin.initialize_app(cred)
+
+firebase_database = firestore.client()
+
+for i in range(len(title)):
+    document=firebase_database.collection('CBNU_notice').document('no.%d'%i)
+    document.set({
+        "title":title[i],
+        "link":link[i],
+        "date":date[5+6*i],
+    })
