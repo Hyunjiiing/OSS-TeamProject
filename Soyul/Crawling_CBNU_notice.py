@@ -14,25 +14,32 @@ def clean_text(text):
     cleaned_text = re.sub(r'[\t\n\r]', '', text)
     return cleaned_text
 
-# date=[]
-# title=[]
-# link=[]
+date=[]
+title=[]
+link=[]
 
-res = {'title': [], 'url': []}
-tr_text = {'data':[]}
+url="https://www.chungbuk.ac.kr/site/www/boardList.do?boardSeq=112&key=698"
+res=requests.get(url)
+soup = bs(res.text, "lxml")
 
+date_raw=soup.body.select("td")
+cbnu_raw=soup.body.select("td.subject")
 
-html = urlopen("https://www.chungbuk.ac.kr/site/www/boardList.do?boardSeq=112&key=698")
-bs0bject = bs(html, "html.parser")
+#작성일
+for i in date_raw:
+    date.append(str(i.text.strip()))
 
-for link in bs0bject.body.select("td"):
-    tr_text['data'].append(str(link.text.strip()))
+#제목
+for i in cbnu_raw:
+    title.append(str(i.text.strip()))
 
-for anchor in bs0bject.body.select("td.subject"):
-    res['title'].append(str(anchor.text.strip()))
-    res['url'].append(str(anchor.a['href'].strip()))
+#링크
+link_semi=[]
+for i in cbnu_raw:
+    link_semi=i.a["href"]
+    link_semi=link_semi[1:]
+    link.append("https://www.chungbuk.ac.kr/site/www"+link_semi)
 
-    
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -45,7 +52,4 @@ from firebase_admin import firestore
 
 # for j in range(0, i):
 #     doc_ref = db.collection(u'Notice').document(u'%d' % j)
-#     doc_ref.set({u'title': res['title'][j], u'date' : tr_text['data'][z], u'url': res['url'][j]})
-#     z = z + 6
-
-print(res['title'])
+#     doc_ref.set({u'title': res['title'][j], u'date' : date[5+6*i], u'url': res['url'][j]})
