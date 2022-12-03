@@ -17,28 +17,28 @@ def clean_text(text):
 date=[]
 title=[]
 link=[]
+for page_num in range(3):
+    url=f"https://www.chungbuk.ac.kr/site/www/boardList.do?page={1+page_num}&boardSeq=112&key=698"
+    res=requests.get(url)
+    soup = bs(res.text, "lxml")
 
-url="https://www.chungbuk.ac.kr/site/www/boardList.do?boardSeq=112&key=698"
-res=requests.get(url)
-soup = bs(res.text, "lxml")
+    date_raw=soup.body.select("td")
+    cbnu_raw=soup.body.select("td.subject")
 
-date_raw=soup.body.select("td")
-cbnu_raw=soup.body.select("td.subject")
+    #작성일
+    for i in date_raw:
+        date.append(str(i.text.strip()))
 
-#작성일
-for i in date_raw:
-    date.append(str(i.text.strip()))
+    #제목
+    for i in cbnu_raw:
+        title.append(str(i.text.strip()))
 
-#제목
-for i in cbnu_raw:
-    title.append(str(i.text.strip()))
-
-#링크
-link_semi=[]
-for i in cbnu_raw:
-    link_semi=i.a["href"]
-    link_semi=link_semi[1:]
-    link.append("https://www.chungbuk.ac.kr/site/www"+link_semi)
+    #링크
+    link_semi=[]
+    for i in cbnu_raw:
+        link_semi=i.a["href"]
+        link_semi=link_semi[1:]
+        link.append("https://www.chungbuk.ac.kr/site/www"+link_semi)
 
 import firebase_admin
 from firebase_admin import credentials
