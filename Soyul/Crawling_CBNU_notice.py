@@ -18,7 +18,24 @@ date=[]
 title=[]
 link=[]
 
-for page_num in range(3):
+
+# #번호가 '공지'인 항목 개수 파악하기 위해 초기값 0으로 count 선언 
+# count=0
+
+# #첫페이지만 있어도 개수 파악 가능
+# url_count="https://www.chungbuk.ac.kr/site/www/boardList.do?page=1&boardSeq=112&key=698"
+# res_count=requests.get(url_count)
+# soup_count=bs(res_count.text,"html.parser")
+
+# #번호가 '공지'인 항목만의 특이점(html)
+# count_raw=soup_count.body.select("em")
+
+# #번호가 '공지'인 항목 개수 count
+# for i in count_raw:
+#     count=count+1
+
+
+for page_num in range(2):
     url=f"https://www.chungbuk.ac.kr/site/www/boardList.do?page={1+page_num}&boardSeq=112&key=698"
     res=requests.get(url)
     soup = bs(res.text, "lxml")
@@ -30,9 +47,14 @@ for page_num in range(3):
     for i in date_raw:
         date.append(str(i.text.strip()))
 
+    # date=date[count:] #slicing => 공지(중복) 제거하기
+
+
     #제목
     for i in cbnu_raw:
         title.append(str(i.text.strip()))
+
+    # title=title[count:] #slicing => 공지(중복) 제거하기
 
     #링크
     link_semi=[]
@@ -40,6 +62,8 @@ for page_num in range(3):
         link_semi=i.a["href"]
         link_semi=link_semi[1:]
         link.append("https://www.chungbuk.ac.kr/site/www"+link_semi)
+
+    # link=link[count:] #slicing => 공지(중복) 제거하기
 
 import firebase_admin
 from firebase_admin import credentials
