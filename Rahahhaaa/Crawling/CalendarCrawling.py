@@ -29,7 +29,7 @@ def slicing(s, mode):
     else:
         if len(start_date) == 6:
             start_date = '2022.' + start_date
-            if start_date[5] != 0:
+            if start_date[5] == ' ':
                 start_date = start_date[:5] + '0' + start_date[6:]
         elif len(start_date) <= 5:
             start_date = '2022.0' + start_date
@@ -58,7 +58,6 @@ for item in data:
         elif text != '':
             slicing(text, mode)
 
-
 #파이어베이스 연동
 import firebase_admin
 from firebase_admin import credentials
@@ -70,8 +69,8 @@ firebase_db = firestore.client()
 
 for i in range(len(res_undergraduate_date)):
     doc = firebase_db.collection('Calendar_undergraduate').document(u'undergraduate%d'%i)
-    doc.set({"content":res_undergraduate_content[i],"start_date":res_undergraduate_date[i]})
+    doc.set({"start_date":res_undergraduate_date[i],"content":res_undergraduate_content[i]})
 
 for i in range(len(res_graduate_date)):
     doc = firebase_db.collection('Calendar_graduate').document(u'graduate%d'%i)
-    doc.set({"content":res_graduate_content[i],"start_date":res_graduate_date[i]})
+    doc.set({"start_date":res_graduate_date[i],"content":res_graduate_content[i]})
