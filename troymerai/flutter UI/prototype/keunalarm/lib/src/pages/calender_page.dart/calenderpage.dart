@@ -75,6 +75,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
               onDaySelected: (DateTime selectedDay, DateTime focusedDay) {
                 // 선택된 날짜의 상태를 갱신합니다.
                 setState(() {
+                  _selectedDay = selectedDay;
                   this.selectedDay = selectedDay;
                   this.focusedDay = focusedDay;
                 });
@@ -93,6 +94,14 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
               },
             ),
           ),
+          ListView(
+            shrinkWrap: true,
+            children: get_graduate_Events_ForDay(_selectedDay)
+                .map((event) => ListTile(
+                      title: Text(event.toString()),
+                    ))
+                .toList(),
+          )
         ],
       ),
     );
