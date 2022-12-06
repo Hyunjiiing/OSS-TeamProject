@@ -30,7 +30,7 @@ for page_num in range(3):
         title_semi=i.a.get_text()
         title_real=clean_text(title_semi)
         url=i.a["href"]
-        result['title'].append(title_real) 
+        result['title'].append(title_real[1:]) 
         #Problem: title 앞에 탭이 함께 출력되는 경우 존재 
         #Solution: '특수문자 제거하는 법' 검색하기 => 정규표현식 사용해 clean_text 함수 만들었다.
         result['link'].append(url)

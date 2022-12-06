@@ -43,10 +43,7 @@ class TableCalendarScreen extends StatelessWidget {
               .map((doc) => doc['start_date'].toDate())
               .toList();
           // Dates = snapshot.data!.docs.map((doc) => doc['start_date'].toDate()).toList();
-<<<<<<< HEAD
-=======
 
->>>>>>> 56c075e8e97b8bbaa77e8420dbc02f4103458053
           for (int i = 0; i <= 53; i++) {
             try {
               if (under_graduate_eventSource[under_graduate_Dates[i]] !=
@@ -67,10 +64,7 @@ class TableCalendarScreen extends StatelessWidget {
           List<String> get_under_graduate_EventsForDay(DateTime day) {
             return events[day] ?? [];
           }
-<<<<<<< HEAD
-=======
 
->>>>>>> 56c075e8e97b8bbaa77e8420dbc02f4103458053
           return Text("hello");
         });
   }
