@@ -9,11 +9,28 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey,
+      color: Colors.grey[300],
       child: Column(
         children: [
           SizedBox(
+            height: 50,
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
+            width: double.infinity,
             height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text(
+                '큰알람 아이콘 들어올 자리',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+            ),
           ),
           Container(
             margin: EdgeInsets.fromLTRB(7, 5, 7, 5),

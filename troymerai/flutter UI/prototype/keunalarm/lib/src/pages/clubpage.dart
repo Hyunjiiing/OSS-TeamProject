@@ -20,47 +20,54 @@ class clubPage extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.53,
-            color: Colors.white,
+            color: Colors.grey[300],
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,
                     child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
                   ),
                   Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 7),
                     width: double.infinity,
                     height: 100,
                     color: Colors.white,

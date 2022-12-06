@@ -6,9 +6,9 @@ import 'package:keunalarm/src/pages/alarmpages/popularalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/softwarecenteralarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/untitledalarm.dart';
 import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
-import 'package:keunalarm/src/pages/testpage.dart';
 
 import '../pages/alarmpages/CBNUscholarshipalarm.dart';
+import '../pages/alarmpages/cbnualarm.dart';
 import '../pages/alarmpages/ecealarm.dart';
 
 class tabMenu extends StatefulWidget {
@@ -22,29 +22,19 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   late TabController tabController;
 
   List<String> items = [
-    "인기",
-    "테스트",
     "컴퓨터 공학과",
     "소프트웨어 중심 사업단",
     "전자정보대학",
     "CBNU 장학",
-    "토목공학과",
-    "전자공학과",
-    "경제학과",
-    "심리학과",
+    "CBNU 공지",
   ];
 
   List pages = [
-    popularAlarm(),
-    TestPage(),
     computerEngineeringAlarm(),
     softwareCenterAlarm(),
     eceAlarm(),
     CBNUScholarshipAlarm(),
-    untitledAlarm(),
-    untitledAlarm(),
-    untitledAlarm(),
-    untitledAlarm(),
+    CBNUAlarmPage(),
 
     /*
       popularAlarm(),
