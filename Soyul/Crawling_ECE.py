@@ -55,7 +55,7 @@ firebase_admin.initialize_app(cred)
 firebase_database = firestore.client()
 
 for i in range(len(result['title'])):
-    document=firebase_database.collection('ECE_notice').document('no.%d'%i)
+    document=firebase_database.collection('ECE_notice').document('%s'%str(i).zfill(4))
     document.set({
         "title":result['title'][i],
         "link":result['link'][i],
