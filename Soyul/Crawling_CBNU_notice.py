@@ -77,7 +77,7 @@ firebase_admin.initialize_app(cred)
 firebase_database = firestore.client()
 
 for i in range(len(title)):
-    document=firebase_database.collection('CBNU_notice').document('no.%d'%i)
+    document=firebase_database.collection('CBNU_notice').document('%s'%str(i).zfill(4))
     document.set({
         "title":title[i],
         "link":link[i],
