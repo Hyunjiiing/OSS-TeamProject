@@ -94,3 +94,69 @@ class TableCalendarScreen extends StatelessWidget {
         });
   }
 }
+
+Future getData() async {
+  List<dynamic> Documents = [];
+  //학부 데이터 읽기
+  var db_undergraduate = await FirebaseFirestore.instance
+      .collection('Calendar_undergraduate')
+      .get()
+      .then((QuerySnapshot querySnapshot) => {
+            querySnapshot.docs.forEach((doc) {
+              Documents.add(doc.data()); //모든 document 정보를 리스트에 저장.
+            }),
+            under_graduate_Events = querySnapshot.docs
+                .map((doc) => doc['content'].toString())
+                .toList(),
+            under_graduate_Dates = querySnapshot.docs
+                .map((doc) => doc['start_date'].toDate())
+                .toList(),
+          });
+  for (int i = 0; i < under_graduate_Events.length; i++) {
+    try {
+      if (under_graduate_eventSource[under_graduate_Dates[i]] !=
+          under_graduate_Events[i]) {
+        under_graduate_eventSource[under_graduate_Dates[i]]!
+            .add(under_graduate_Events[i]);
+      }
+    } catch (e) {
+      under_graduate_eventSource[under_graduate_Dates[i]] = [
+        under_graduate_Events[i]
+      ];
+    }
+  }
+  under_graduate_eventSource.forEach(
+      ((key, value) => under_graduate_eventSource[key] = value.toSet()));
+  under_graduate_eventSource.forEach(
+      ((key, value) => under_graduate_eventSource[key] = value.toList()));
+
+  //대학원 데이터 읽기
+  var db_graduate = await FirebaseFirestore.instance
+      .collection('Calendar_undergraduate')
+      .get()
+      .then((QuerySnapshot querySnapshot) => {
+            querySnapshot.docs.forEach((doc) {
+              Documents.add(doc.data()); //모든 document 정보를 리스트에 저장.
+            }),
+            graduate_Events = querySnapshot.docs
+                .map((doc) => doc['content'].toString())
+                .toList(),
+            graduate_Dates = querySnapshot.docs
+                .map((doc) => doc['start_date'].toDate())
+                .toList(),
+          });
+  for (int i = 0; i < graduate_Events.length; i++) {
+    try {
+      if (graduate_eventSource[graduate_Dates[i]] != graduate_Events[i]) {
+        graduate_eventSource[graduate_Dates[i]]!.add(graduate_Events[i]);
+      }
+    } catch (e) {
+      graduate_eventSource[graduate_Dates[i]] = [graduate_Events[i]];
+    }
+  }
+  graduate_eventSource
+      .forEach(((key, value) => graduate_eventSource[key] = value.toSet()));
+  graduate_eventSource
+      .forEach(((key, value) => graduate_eventSource[key] = value.toList()));
+}
+
