@@ -7,6 +7,7 @@ import 'package:keunalarm/src/pages/calender_page.dart/calenderpage.dart';
 import 'package:keunalarm/src/pages/clubpage.dart';
 import 'package:keunalarm/src/pages/home.dart';
 import 'package:keunalarm/src/pages/mainpage.dart';
+import 'package:keunalarm/src/pages/mypage.dart';
 
 class App extends GetView<BottomNavController> {
   const App({super.key});
@@ -58,9 +59,7 @@ class App extends GetView<BottomNavController> {
               MainPage(),
               TableCalendarScreen(),
               clubPage(),
-              Container(
-                child: Center(child: Text('MYPAGE')),
-              ),
+              myPage(),
             ],
           ),
           bottomNavigationBar: SafeArea(

@@ -46,6 +46,7 @@ dependencies:
   auto_size_text: ^3.0.0
   shared_preferences: ^2.0.15
   table_calendar: ^3.0.8
+  bubble: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/img_killboong.png
+    - assets/images/img_studyboong.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

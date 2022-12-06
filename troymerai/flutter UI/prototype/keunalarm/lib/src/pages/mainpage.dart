@@ -76,7 +76,7 @@ class MainPage extends StatelessWidget {
                       child: Center(
                         child: Image.asset(
                           "assets/images/img_killboong.png",
-                          width: 200,
+                          width: MediaQuery.of(context).size.width * 0.46,
                         ),
                       ),
                     ),
