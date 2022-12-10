@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import '../../components/color.dart';
 
 class computerClubPage extends StatelessWidget {
   const computerClubPage({super.key});
@@ -7,15 +8,15 @@ class computerClubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: HexColor("#f0fafc"),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor("#f0fafc"),
         elevation: 0,
         leadingWidth: 0,
         title: Center(
           child: Text(
-            '컴퓨터 공학과 학과 동아리',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            '컴퓨터공학과 동아리',
+            style: TextStyle(fontSize: 25, fontFamily: "NanumEB"),
           ),
         ),
       ),
@@ -27,28 +28,23 @@ class computerClubPage extends StatelessWidget {
               height: 180,
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey[500]!,
-                      offset: Offset(4, 4),
-                      blurRadius: 2,
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-4, -4),
-                      blurRadius: 2,
-                    ),
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Column(
                 children: [
                   Row(
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width * 0.2,
-                        height: 25,
-                        child: AutoSizeText('연구 동아리명'),
+                        height: 30,
+                        child: AutoSizeText(
+                          '동아리명 :',
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontFamily: "NanumEB",
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                       SizedBox(
                         width: 5,

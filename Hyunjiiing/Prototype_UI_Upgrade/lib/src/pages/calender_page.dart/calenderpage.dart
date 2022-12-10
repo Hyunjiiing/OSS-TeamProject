@@ -1,8 +1,8 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../components/color.dart';
 
 class Event {
   String title;
@@ -49,25 +49,34 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
     }
 
     return Scaffold(
+      backgroundColor: HexColor("#f0fafc"),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor("#f0fafc"),
         title: Center(
             child: Text(
           '학사일정',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 25, fontFamily: "NanumEB", fontWeight: FontWeight.bold),
         )),
         elevation: 0,
       ),
       body: Column(
         children: [
           Container(
+            width: MediaQuery.of(context).size.width * 8,
+            height: MediaQuery.of(context).size.height * 0.4,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
             margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
             child: TableCalendar(
               headerStyle: HeaderStyle(
-                leftChevronVisible: false,
-                rightChevronVisible: false,
+                titleCentered: true,
+                leftChevronVisible: true,
+                rightChevronVisible: true,
                 formatButtonVisible: false,
-                titleTextStyle: TextStyle(fontSize: 15),
+                titleTextStyle: TextStyle(fontSize: 25, fontFamily: "NanumB"),
               ),
               firstDay: DateTime.utc(2022, 1, 1),
               lastDay: DateTime.utc(2023, 12, 31),
@@ -84,10 +93,37 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                 return isSameDay(selectedDay, day);
               },
               calendarStyle: CalendarStyle(
+                selectedTextStyle: const TextStyle(
+                  fontSize: 16.0,
+                ),
+
+// selectedDay 모양 조정
+                selectedDecoration: const BoxDecoration(
+                  color: Color.fromARGB(151, 0, 151, 189),
+                  shape: BoxShape.circle,
+                ),
                 markerDecoration: BoxDecoration(
                   color: Colors.black,
                   shape: BoxShape.circle,
                 ),
+                isTodayHighlighted: true,
+
+// today 글자 조정
+                todayTextStyle: const TextStyle(
+                  color: Color.fromARGB(255, 14, 13, 13),
+                  fontSize: 16.0,
+                ),
+
+// today 모양 조정
+                todayDecoration: const BoxDecoration(
+                  color: Color.fromARGB(38, 0, 151, 189),
+                  shape: BoxShape.circle,
+                ),
+                weekendTextStyle:
+                    const TextStyle(color: Color.fromARGB(255, 100, 90, 230)),
+
+// weekend 모양 조정
+                weekendDecoration: const BoxDecoration(shape: BoxShape.circle),
               ),
               eventLoader: (day) {
                 return get_graduate_Events_ForDay(day);
@@ -98,7 +134,10 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
             shrinkWrap: true,
             children: get_graduate_Events_ForDay(_selectedDay)
                 .map((event) => ListTile(
-                      title: Text(event.toString()),
+                      title: Text(
+                        event.toString(),
+                        style: TextStyle(fontFamily: "NanumB"),
+                      ),
                     ))
                 .toList(),
           )
