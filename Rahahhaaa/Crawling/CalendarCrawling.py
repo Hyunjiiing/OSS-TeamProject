@@ -69,7 +69,6 @@ cred = credentials.Certificate("C:/Users/airli/Desktop/OSS_project/크롤링/keu
 firebase_admin.initialize_app(cred)
 firebase_db = firestore.client()
 
-'''
 for i in range(len(res_undergraduate_date)):
     doc = firebase_db.collection('Calendar_undergraduate').document(u'undergraduate%d'%i)
     doc.set({"start_date":res_undergraduate_date[i],"content":res_undergraduate_content[i]})
@@ -77,7 +76,7 @@ for i in range(len(res_undergraduate_date)):
 for i in range(len(res_graduate_date)):
     doc = firebase_db.collection('Calendar_graduate').document(u'graduate%d'%i)
     doc.set({"start_date":res_graduate_date[i],"content":res_graduate_content[i]})
-'''
+
 #collection 하나로 저장하기(구분방식: 대학원datetime 0초/학부datetime1초)
 for i in range(len(res_undergraduate_date)):
     res_undergraduate_date[i] = res_undergraduate_date[i] + datetime.timedelta(seconds=1)
