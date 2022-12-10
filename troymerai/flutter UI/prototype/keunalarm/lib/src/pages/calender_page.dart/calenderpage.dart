@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'dart:math';
+
 class Event {
   String title;
   Event(this.title);
@@ -11,6 +13,10 @@ class Event {
   @override
   String toString() => title;
 }
+
+List<String> Events = [];
+List<dynamic> Dates = [];
+Map<DateTime, dynamic> eventSource = {};
 
 List<String> graduate_Events = [];
 List<dynamic> graduate_Dates = [];
@@ -35,17 +41,25 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
     DateTime.now().day,
   );
 
-  DateTime focusedDay = DateTime.now();
+  DateTime focusedDay = DateTime(2022, 7, 13);
 
   @override
   Widget build(BuildContext context) {
     getData();
-    final events = LinkedHashMap(
+    final graduate_events = LinkedHashMap(
       equals: isSameDay,
     )..addAll(graduate_eventSource);
 
     List<String> get_graduate_Events_ForDay(DateTime day) {
-      return events[day] ?? [];
+      return graduate_events[day] ?? [];
+    }
+
+    final under_graduate_events = LinkedHashMap(
+      equals: isSameDay,
+    )..addAll(under_graduate_eventSource);
+
+    List<String> get_under_graduate_Events_ForDay(DateTime day) {
+      return graduate_events[day] ?? [];
     }
 
     return Scaffold(
@@ -83,16 +97,52 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
               selectedDayPredicate: (DateTime day) {
                 return isSameDay(selectedDay, day);
               },
-              calendarStyle: CalendarStyle(
-                markerDecoration: BoxDecoration(
-                  color: Colors.black,
-                  shape: BoxShape.circle,
-                ),
-              ),
+              //여기부터
+              // calendarStyle: CalendarStyle(
+              //   markerDecoration: BoxDecoration(
+              //     color: Colors.black,
+              //     shape: BoxShape.circle,
+              //   ),
+              // ),
+              //여기까지
               eventLoader: (day) {
-                return get_graduate_Events_ForDay(day);
+                return get_under_graduate_Events_ForDay(day);
               },
+              calendarBuilders: CalendarBuilders(
+                markerBuilder: (BuildContext context, date, events) {
+                  if (events.isEmpty) return SizedBox();
+                  return ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: events.length,
+                      itemBuilder: (context, index) {
+                        print(date);
+                        return Container(
+                          margin: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.all(1),
+                          child: Container(
+                              // height: 7,
+                              color: Colors.blue,
+                              width: 53,
+                              height: 10,
+                              child: Center(
+                                child: Text(events.length.toString(),
+                                    style: TextStyle(
+                                        fontSize: 12, color: Colors.black)),
+                              )),
+                        );
+                      });
+                },
+              ),
             ),
+          ),
+          ListView(
+            shrinkWrap: true,
+            children: get_under_graduate_Events_ForDay(_selectedDay)
+                .map((event) => ListTile(
+                      title: Text(event.toString()),
+                    ))
+                .toList(),
           ),
           ListView(
             shrinkWrap: true,
@@ -106,6 +156,42 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
       ),
     );
   }
+}
+
+Future getCalendarData() async {
+  List<dynamic> Documents = [];
+  //학부 데이터 읽기
+  var db = await FirebaseFirestore.instance
+      .collection('Calendar')
+      .get()
+      .then((QuerySnapshot querySnapshot) => {
+            querySnapshot.docs.forEach((doc) {
+              Documents.add(doc.data()); //모든 document 정보를 리스트에 저장.
+            }),
+            Events = querySnapshot.docs
+                .map((doc) => doc['content'].toString())
+                .toList(),
+            Dates = querySnapshot.docs
+                .map((doc) => doc['start_date'].toDate())
+                .toList(),
+          });
+  for (int i = 0; i < Events.length; i++) {
+    try {
+      if (eventSource[Dates[i]] !=
+          Events[i]) {
+        eventSource[Dates[i]]!
+            .add(Events[i]);
+      }
+    } catch (e) {
+      eventSource[Dates[i]] = [
+        Events[i]
+      ];
+    }
+  }
+  eventSource.forEach(
+      ((key, value) => eventSource[key] = value.toSet()));
+  under_graduate_eventSource.forEach(
+      ((key, value) => eventSource[key] = value.toList()));
 }
 
 Future getData() async {
