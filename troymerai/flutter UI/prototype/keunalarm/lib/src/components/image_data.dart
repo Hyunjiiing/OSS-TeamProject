@@ -25,4 +25,5 @@ class ImageData extends StatelessWidget {
 class IconsPath {
   static String get killBoong => 'assets/images/img_killboong.png';
   static String get studyBoong => 'assets/images/img_studyboong.png';
+  static String get happyBoong => 'assets/images/img_happyboong.png';
 }

@@ -73,6 +73,8 @@ flutter:
   assets:
     - assets/images/img_killboong.png
     - assets/images/img_studyboong.png
+    - assets/images/img_happyboong.png
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
