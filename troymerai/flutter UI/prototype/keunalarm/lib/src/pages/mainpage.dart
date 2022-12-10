@@ -35,7 +35,7 @@ class MainPage extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.3,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -44,7 +44,7 @@ class MainPage extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  height: MediaQuery.of(context).size.height * 0.6,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
@@ -52,7 +52,7 @@ class MainPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '\n알람 놓치면\n큰일남!\n\n\n큰알람에서\n중요한 공지\n알아가세요!',
+                      '\n알람 놓치면\n큰일남!\n\n큰알람에서\n중요한 공지\n알아가세요!',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 30,
@@ -62,13 +62,14 @@ class MainPage extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.46,
-                  height: MediaQuery.of(context).size.height * 0.6,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Container(
+                      height: MediaQuery.of(context).size.height * 0.3,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -83,6 +84,70 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.3,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 7, 7, 7),
+                    width: double.infinity,
+                    height: 100,
+                    color: Colors.white,
+                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
+                  ),
+                ],
+              ),
             ),
           ),
           GestureDetector(

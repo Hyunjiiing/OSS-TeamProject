@@ -10,6 +10,7 @@ class clubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.grey[300],
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
@@ -18,62 +19,27 @@ class clubPage extends StatelessWidget {
             height: 40,
           ),
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.53,
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.15,
             color: Colors.grey[300],
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(7, 7, 7, 7),
-                    width: double.infinity,
-                    height: 100,
-                    color: Colors.white,
-                    child: Center(child: Text('동아리 홍보나 영입 공고 배너')),
-                  ),
-                ],
+            child: Center(
+              child: Text(
+                '동아리 페이지',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.35,
+            color: Colors.grey[300],
+            child: Center(
+              child: Image.asset(
+                "assets/images/img_happyboong.png",
+                width: MediaQuery.of(context).size.width * 0.6,
               ),
             ),
           ),
