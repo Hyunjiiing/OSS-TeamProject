@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.0.15
   table_calendar: ^3.0.8
   bubble: ^1.2.1
+  flutter_phone_direct_caller: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,8 @@ flutter:
     - assets/images/img_killboong.png
     - assets/images/img_studyboong.png
     - assets/images/img_happyboong.png
+    - assets/images/img_keunalarmlogo.png
+    - assets/images/img_cosmiclogo.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

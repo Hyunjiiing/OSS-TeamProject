@@ -1,5 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class phoneBookView extends StatefulWidget {
   phoneBookView({super.key});
@@ -9,60 +12,561 @@ class phoneBookView extends StatefulWidget {
 }
 
 class _phoneBookViewState extends State<phoneBookView> {
-  CollectionReference phoneBook =
-      FirebaseFirestore.instance.collection('Phone_number');
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StreamBuilder(
-        stream: phoneBook.snapshots(),
-        builder: (BuildContext context,
-            AsyncSnapshot<QuerySnapshot> streamSnapshot) {
-          if (streamSnapshot.hasData) {
-            return ListView.builder(
-              itemCount: streamSnapshot.data!.docs.length,
-              itemBuilder: (context, index) {
-                final DocumentSnapshot documentSnapshot =
-                    streamSnapshot.data!.docs[index];
-                return
-                    /** 이게 공지사항 페이지에 있는 박스 >>> 디자인은 여기서 바꿔야 함 */
-
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
                     Container(
-                  margin: EdgeInsets.fromLTRB(13, 13, 13, 8),
-                  width: double.infinity,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    color: Colors.white54,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: Offset(4, 4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('전자정보대학 학장'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-3281'),
+                        ],
                       ),
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432613281');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
                       ),
-                    ],
-                  ),
-                  child: ListTile(
-                    // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
-                    title: Text(documentSnapshot['department']),
-                    subtitle: Text(documentSnapshot['number']),
-                  ),
-                );
-              },
-            );
-          }
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('전기공학부 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-2419'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432612419');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('전자공학부 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-2473'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432612473');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('정보통신공학부 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-2480'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432612480');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('컴퓨터공학과 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-2449'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432612449');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('소프트웨어학부 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-2260'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432612260');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('지능로봇공학과 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-3225'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432613225');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('전자정보대학 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-261-3528'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432613528');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 80,
+            margin: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey[500]!,
+                  offset: Offset(4, 4),
+                  blurRadius: 2,
+                ),
+                BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(-4, -4),
+                  blurRadius: 2,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: 80,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('소프트웨어중심사업단 행정실'),
+                          SizedBox(
+                            width: 30,
+                          ),
+                          Text('043-249-1833'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        FlutterPhoneDirectCaller.callNumber('0432491833');
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.15,
+                        height: 80,
+                        child: Icon(
+                          CupertinoIcons.phone,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -26,4 +26,6 @@ class IconsPath {
   static String get killBoong => 'assets/images/img_killboong.png';
   static String get studyBoong => 'assets/images/img_studyboong.png';
   static String get happyBoong => 'assets/images/img_happyboong.png';
+  static String get keunalarmlogo => 'assets/images/img_keunalarmlogo.png';
+  static String get cosmiclogo => 'assets/images/img_cosmiclogo.png';
 }

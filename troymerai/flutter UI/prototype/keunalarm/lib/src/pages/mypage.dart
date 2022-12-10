@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble/bubble.dart';
 import 'package:get/get.dart';
-import 'package:keunalarm/src/pages/phonebookpage/phonebookview.dart';
+import 'package:keunalarm/src/pages/phonebookpage/phonebookpage.dart';
 import 'package:keunalarm/src/pages/suggestions/suggestionpage.dart';
 
 class myPage extends StatefulWidget {
@@ -24,37 +24,41 @@ class _myPageState extends State<myPage> {
       isScrollControlled: true,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.5,
+        return SizedBox(
+          //width: double.infinity,
+          //height: MediaQuery.of(context).size.height * 0.5,
           child: Padding(
             padding: EdgeInsets.only(
-                top: 20,
-                left: 20,
-                right: 20,
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+              top: 20,
+              left: 20,
+              right: 20,
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 TextField(
                   controller: textController,
                   decoration: InputDecoration(
-                    labelText: 'suggestion',
+                    labelText: '여기에 적어주세요!',
                   ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final String suggestionlist = textController.text;
-                    await suggestion.add({'suggestion': suggestionlist});
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final String suggestionlist = textController.text;
+                      await suggestion.add({'suggestion': suggestionlist});
 
-                    textController.text = "";
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('suggest'),
+                      textController.text = "";
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('일 시키기'),
+                  ),
                 )
               ],
             ),
@@ -66,9 +70,9 @@ class _myPageState extends State<myPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
+    return Scaffold(
+      backgroundColor: Colors.grey[300],
+      body: Column(
         children: [
           Container(
             width: double.infinity,
@@ -92,7 +96,7 @@ class _myPageState extends State<myPage> {
                       nip: BubbleNip.rightBottom,
                       elevation: 0,
                       child: AutoSizeText(
-                        '저를 눌러서 \n필요한 기능들을 알려주세요!',
+                        '저를 눌러서 \n필요한 기능들을 \n알려주세요!',
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.white,
@@ -159,13 +163,16 @@ class _myPageState extends State<myPage> {
                       child: Center(
                         child: Text(
                           '건의사항 목록',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(phoneBookView());
+                      Get.to(phoneBookPage());
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(13, 13, 13, 8),
@@ -191,7 +198,10 @@ class _myPageState extends State<myPage> {
                       ),
                       child: Center(
                         child: Text(
-                          '전화번호부',
+                          '학내 전화번호 목록',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
