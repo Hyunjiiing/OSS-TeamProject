@@ -1,8 +1,10 @@
 import 'dart:collection';
-
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:keunalarm/src/components/firestore_event.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:math';
 
 class Event {
   String title;
@@ -11,6 +13,14 @@ class Event {
   @override
   String toString() => title;
 }
+
+int count = 0;
+
+List<Color> c = [Colors.red, Colors.blue];
+
+List<String> Events = [];
+List<dynamic> Dates = [];
+Map<DateTime, dynamic> eventSource = {};
 
 List<String> graduate_Events = [];
 List<dynamic> graduate_Dates = [];
@@ -40,71 +50,304 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
   @override
   Widget build(BuildContext context) {
     getData();
-    final events = LinkedHashMap(
+    getCalendarData();
+
+    final graduate_events = LinkedHashMap(
       equals: isSameDay,
     )..addAll(graduate_eventSource);
 
     List<String> get_graduate_Events_ForDay(DateTime day) {
+      if (graduate_events[day] != null) {
+        return graduate_events[day] ?? [];
+      } else {
+        return [
+          "오늘은 일정이 없습니다.",
+        ];
+      }
+    }
+
+    final under_graduate_events = LinkedHashMap(
+      equals: isSameDay,
+    )..addAll(under_graduate_eventSource);
+
+    List<String> get_under_graduate_Events_ForDay(DateTime day) {
+      if (under_graduate_events[day] != null) {
+        return under_graduate_events[day] ?? [];
+      } else {
+        return [
+          "오늘은 일정이 없습니다.",
+        ];
+      }
+    }
+
+    final events = LinkedHashMap(
+      equals: isSameDay,
+    )..addAll(eventSource);
+
+    List<String> get_Events_ForDay(DateTime day) {
       return events[day] ?? [];
     }
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Center(
-            child: Text(
-          '학사일정',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        )),
-        elevation: 0,
-      ),
-      body: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-            child: TableCalendar(
-              headerStyle: HeaderStyle(
-                leftChevronVisible: false,
-                rightChevronVisible: false,
-                formatButtonVisible: false,
-                titleTextStyle: TextStyle(fontSize: 15),
-              ),
-              firstDay: DateTime.utc(2022, 1, 1),
-              lastDay: DateTime.utc(2023, 12, 31),
-              focusedDay: focusedDay,
-              onDaySelected: (DateTime selectedDay, DateTime focusedDay) {
-                // 선택된 날짜의 상태를 갱신합니다.
-                setState(() {
-                  _selectedDay = selectedDay;
-                  this.selectedDay = selectedDay;
-                  this.focusedDay = focusedDay;
-                });
-              },
-              selectedDayPredicate: (DateTime day) {
-                return isSameDay(selectedDay, day);
-              },
-              calendarStyle: CalendarStyle(
-                markerDecoration: BoxDecoration(
-                  color: Colors.black,
-                  shape: BoxShape.circle,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Center(
+              child: Text(
+            '학사일정',
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          )),
+          elevation: 0,
+        ),
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.5,
+                margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                child: TableCalendar(
+                  daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(
+                        color: Color(0xff30384c),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                      weekendStyle: TextStyle(
+                        color: Color(0xff30384c),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      )),
+                  headerStyle: HeaderStyle(
+                      formatButtonVisible: false,
+                      titleTextStyle: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      leftChevronIcon: Icon(
+                        Icons.chevron_left,
+                        color: Color(0xff30384c),
+                      ),
+                      rightChevronIcon: Icon(
+                        Icons.chevron_right,
+                        color: Color(0xff30384c),
+                      )),
+                  firstDay: DateTime.utc(2022, 1, 1),
+                  lastDay: DateTime.utc(2023, 12, 31),
+                  focusedDay: focusedDay,
+                  onDaySelected: (DateTime selectedDay, DateTime focusedDay) {
+                    setState(() {
+                      _selectedDay = selectedDay;
+                      this.selectedDay = selectedDay;
+                      this.focusedDay = focusedDay;
+                    });
+                  },
+                  selectedDayPredicate: (DateTime day) {
+                    return isSameDay(selectedDay, day);
+                  },
+                  calendarBuilders: CalendarBuilders(
+                    markerBuilder: (BuildContext context, date, events) {
+                      if (events.isEmpty) return SizedBox();
+                      if (count == 2) count = 0;
+                      if (events.length == 2) {
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: events.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                padding: const EdgeInsets.all(1),
+                                child: Container(
+                                  // height: 7,
+                                  width: 5,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: c[count++]),
+                                ),
+                              );
+                            });
+                      } else if (get_graduate_Events_ForDay(date)
+                          .contains(events[0].toString())) {
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: events.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                padding: const EdgeInsets.all(1),
+                                child: Container(
+                                  // height: 7,
+                                  width: 5,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.pink),
+                                ),
+                              );
+                            });
+                      } else {
+                        return ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: events.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: const EdgeInsets.only(top: 20),
+                                padding: const EdgeInsets.all(1),
+                                child: Container(
+                                  // height: 7,
+                                  width: 5,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue),
+                                ),
+                              );
+                            });
+                      }
+                    },
+                  ),
+                  eventLoader: (day) {
+                    return get_Events_ForDay(day);
+                  },
                 ),
               ),
-              eventLoader: (day) {
-                return get_graduate_Events_ForDay(day);
-              },
-            ),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                        // padding: const EdgeInsets.all(10.0),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(4, 4),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                              ),
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                              ),
+                            ],
+                            border: Border(
+                              top: BorderSide(
+                                color: Colors.blue,
+                                width: 5,
+                              ),
+                            )),
+                        child: ListView(
+                          primary: false,
+                          shrinkWrap: true,
+                          children:
+                              get_under_graduate_Events_ForDay(_selectedDay)
+                                  .map((event) => ListTile(
+                                        title: Text(event.toString()),
+                                      ))
+                                  .toList(),
+                        ),
+                      ),
+                      Container(
+                          margin: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+
+                          // padding: const EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(4, 4),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                              ),
+                              BoxShadow(
+                                color: Colors.white,
+                                offset: Offset(-4, -4),
+                                blurRadius: 2,
+                                spreadRadius: 1,
+                              ),
+                            ],
+                            border: Border(
+                                top: BorderSide(color: Colors.red, width: 5)),
+                          ),
+                          child: ListView(
+                            primary: false,
+                            shrinkWrap: true,
+                            children: get_graduate_Events_ForDay(_selectedDay)
+                                .map((event) => ListTile(
+                                      title: Text(event.toString()),
+                                    ))
+                                .toList(),
+                          )),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
-          ListView(
-            shrinkWrap: true,
-            children: get_graduate_Events_ForDay(_selectedDay)
-                .map((event) => ListTile(
-                      title: Text(event.toString()),
-                    ))
+        ));
+  }
+}
+
+Future getCalendarData() async {
+  List<dynamic> Documents = [];
+  //대학원 데이터 읽기
+  var db = await FirebaseFirestore.instance
+      .collection('Calendar')
+      .get()
+      .then((QuerySnapshot querySnapshot) => {
+            querySnapshot.docs.forEach((doc) {
+              Documents.add(doc.data()); //모든 document 정보를 리스트에 저장.
+            }),
+            Events = querySnapshot.docs
+                .map((doc) => doc['content'].toString())
                 .toList(),
-          )
-        ],
-      ),
-    );
+            Dates = querySnapshot.docs
+                .map((doc) => doc['start_date'].toDate())
+                .toList(),
+          });
+  for (int i = 0; i < Events.length; i++) {
+    try {
+      if (eventSource[Dates[i]] < 1) {
+        if (eventSource[Dates[i]] != Events[i]) {
+          eventSource[Dates[i]]!.add(Events[i]);
+        }
+      }
+    } catch (e) {
+      eventSource[Dates[i]] = [Events[i]];
+    }
+  }
+  List<DateTime> tempDates = [];
+  List<List> tempLists = [];
+  eventSource.forEach(((key, value) => eventSource[key] = value.toSet()));
+  eventSource.forEach(((key, value) => eventSource[key] = value.toList()));
+  eventSource.forEach(((key, value) {
+    if (key.second == 1) {
+      DateTime temp = key;
+
+      temp = temp.add(Duration(seconds: -1));
+      print(value);
+      tempDates.add(temp);
+      tempLists.add(value);
+    }
+  }));
+  print(tempDates.length);
+  print(eventSource[DateTime(2022, 4, 18)]);
+  for (int i = 0; i < tempDates.length; i++) {
+    try {
+      if (eventSource[tempDates[i]][0] != tempLists[i][0]) {
+        eventSource[tempDates[i]].add(tempLists[i][0]);
+      }
+    } catch (e) {
+      eventSource[tempDates[i]] = tempLists[i];
+    }
+    print(eventSource[tempDates[i]]);
   }
 }
 
@@ -145,7 +388,7 @@ Future getData() async {
 
   //대학원 데이터 읽기
   var db_graduate = await FirebaseFirestore.instance
-      .collection('Calendar_undergraduate')
+      .collection('Calendar_graduate')
       .get()
       .then((QuerySnapshot querySnapshot) => {
             querySnapshot.docs.forEach((doc) {
