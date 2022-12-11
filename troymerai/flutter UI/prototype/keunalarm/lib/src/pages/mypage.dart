@@ -76,7 +76,7 @@ class _myPageState extends State<myPage> {
         children: [
           Container(
             width: double.infinity,
-            height: 100,
+            height: 75,
             color: HexColor("#f0fafc"),
           ),
           Row(

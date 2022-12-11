@@ -85,7 +85,7 @@ class MainPage extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.37,
+            height: MediaQuery.of(context).size.height * 0.35,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -97,12 +97,12 @@ class MainPage extends StatelessWidget {
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(7, 7, 7, 0),
-                        width: MediaQuery.of(context).size.width * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         height: 100,
                         color: Colors.white,
                         child: Image.asset(
                           "assets/images/img_cosmiclogo.png",
-                          width: MediaQuery.of(context).size.width * 0.5,
+                          width: MediaQuery.of(context).size.width * 0.45,
                         ),
                       ),
                       Container(

@@ -6,6 +6,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math';
 
+import '../../components/color.dart';
+
 class Event {
   String title;
   Event(this.title);
@@ -90,15 +92,19 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: HexColor("#f0fafc"),
           title: Center(
               child: Text(
             '학사일정',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 25,
+                fontFamily: "NanumEB",
+                fontWeight: FontWeight.bold),
           )),
           elevation: 0,
         ),
         body: Container(
+          color: HexColor("#f0fafc"),
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: Column(
@@ -107,6 +113,10 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height * 0.5,
                 margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: TableCalendar(
                   daysOfWeekStyle: DaysOfWeekStyle(
                       weekdayStyle: TextStyle(
@@ -214,8 +224,9 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                 ),
               ),
               Container(
+                color: HexColor("#f0fafc"),
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.30,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -239,7 +250,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                             ],
                             border: Border(
                               top: BorderSide(
-                                color: Colors.blue,
+                                color: Colors.red,
                                 width: 5,
                               ),
                             )),
@@ -274,7 +285,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                               ),
                             ],
                             border: Border(
-                                top: BorderSide(color: Colors.red, width: 5)),
+                                top: BorderSide(color: Colors.blue, width: 5)),
                           ),
                           child: ListView(
                             primary: false,
