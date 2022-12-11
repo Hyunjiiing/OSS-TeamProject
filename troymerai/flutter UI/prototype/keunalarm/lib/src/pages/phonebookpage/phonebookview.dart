@@ -26,7 +26,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -49,11 +49,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('전자정보대학 학장'),
+                          Text(
+                            '전자정보대학 학장',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-3281'),
+                          Text(
+                            '043-261-3281',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -87,7 +93,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -110,11 +116,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('전기공학부 행정실'),
+                          Text(
+                            '전기공학부 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-2419'),
+                          Text(
+                            '043-261-2419',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -148,7 +160,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -171,11 +183,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('전자공학부 행정실'),
+                          Text(
+                            '전자공학부 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-2473'),
+                          Text(
+                            '043-261-2473',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -209,7 +227,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -232,11 +250,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('정보통신공학부 행정실'),
+                          Text(
+                            '정보통신공학부 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-2480'),
+                          Text(
+                            '043-261-2480',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -270,7 +294,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -293,11 +317,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('컴퓨터공학과 행정실'),
+                          Text(
+                            '컴퓨터공학과 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-2449'),
+                          Text(
+                            '043-261-2449',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -331,7 +361,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -354,11 +384,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('소프트웨어학부 행정실'),
+                          Text(
+                            '소프트웨어학부 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-2260'),
+                          Text(
+                            '043-261-2260',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -392,7 +428,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -415,11 +451,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('지능로봇공학과 행정실'),
+                          Text(
+                            '지능로봇공학과 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-3225'),
+                          Text(
+                            '043-261-3225',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -453,7 +495,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -476,11 +518,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('전자정보대학 행정실'),
+                          Text(
+                            '전자정보대학 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-261-3528'),
+                          Text(
+                            '043-261-3528',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),
@@ -514,7 +562,7 @@ class _phoneBookViewState extends State<phoneBookView> {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey[500]!,
+                  color: Colors.grey[300]!,
                   offset: Offset(4, 4),
                   blurRadius: 2,
                 ),
@@ -537,11 +585,17 @@ class _phoneBookViewState extends State<phoneBookView> {
                           SizedBox(
                             width: 20,
                           ),
-                          Text('소프트웨어중심사업단 행정실'),
+                          Text(
+                            '소프트웨어중심사업단 행정실',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                           SizedBox(
                             width: 30,
                           ),
-                          Text('043-249-1833'),
+                          Text(
+                            '043-249-1833',
+                            style: TextStyle(fontFamily: "NanumB"),
+                          ),
                         ],
                       ),
                     ),

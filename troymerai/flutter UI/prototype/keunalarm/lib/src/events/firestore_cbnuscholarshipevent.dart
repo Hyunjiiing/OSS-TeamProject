@@ -45,6 +45,7 @@ class _firestoreCBNUScholarshipEvent
             AsyncSnapshot<QuerySnapshot> streamSnapshot) {
           if (streamSnapshot.hasData) {
             return ListView.builder(
+              reverse: true,
               itemCount: streamSnapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 final DocumentSnapshot documentSnapshot =
@@ -53,26 +54,12 @@ class _firestoreCBNUScholarshipEvent
                     /** 이게 공지사항 페이지에 있는 박스 >>> 디자인은 여기서 바꿔야 함 */
 
                     Container(
-                  margin: EdgeInsets.fromLTRB(13, 13, 13, 8),
+                  margin: EdgeInsets.fromLTRB(10, 10, 10, 0.5),
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Colors.white54,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: Offset(4, 4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                    ],
                   ),
                   child: Expanded(
                     child: GestureDetector(
@@ -85,8 +72,14 @@ class _firestoreCBNUScholarshipEvent
                       },
                       child: ListTile(
                         // 아직 데이터 2개종류 넣는 방법밖에 못찾음, 더 검색해봐야함
-                        title: Text(documentSnapshot['title']),
-                        subtitle: Text(documentSnapshot['date']),
+                        title: Text(
+                          documentSnapshot['title'],
+                          style: TextStyle(fontFamily: "NanumB"),
+                        ),
+                        subtitle: Text(
+                          documentSnapshot['date'],
+                          style: TextStyle(fontFamily: "NanumB"),
+                        ),
                       ),
                     ),
                   ),

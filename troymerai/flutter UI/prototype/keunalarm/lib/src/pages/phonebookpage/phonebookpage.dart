@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:keunalarm/src/pages/phonebookpage/phonebookview.dart';
 
+import '../../components/color.dart';
+
 class phoneBookPage extends StatefulWidget {
   phoneBookPage({super.key});
 
@@ -13,11 +15,19 @@ class _phoneBookPageState extends State<phoneBookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: HexColor("#f0fafc"),
         centerTitle: true,
-        title: Text('학내 전화번호 목록'),
+        elevation: 0,
+        title: Text(
+          '학내 전화번호 목록',
+          style: TextStyle(
+            fontSize: 25,
+            fontFamily: "NanumEB",
+          ),
+        ),
       ),
       body: Container(
-        color: Colors.grey[300],
+        color: HexColor("#f0fafc"),
         height: MediaQuery.of(context).size.height * 0.9,
         child: phoneBookView(),
       ),

@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:keunalarm/src/pages/phonebookpage/phonebookpage.dart';
 import 'package:keunalarm/src/pages/suggestions/suggestionpage.dart';
 
+import '../components/color.dart';
+
 class myPage extends StatefulWidget {
   myPage({super.key});
 
@@ -25,8 +27,6 @@ class _myPageState extends State<myPage> {
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          //width: double.infinity,
-          //height: MediaQuery.of(context).size.height * 0.5,
           child: Padding(
             padding: EdgeInsets.only(
               top: 20,
@@ -71,20 +71,20 @@ class _myPageState extends State<myPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: HexColor("#f0fafc"),
       body: Column(
         children: [
           Container(
             width: double.infinity,
             height: 100,
-            color: Colors.white,
+            color: HexColor("#f0fafc"),
           ),
           Row(
             children: [
               Column(
                 children: [
                   Container(
-                    color: Colors.white,
+                    color: HexColor("#f0fafc"),
                     width: MediaQuery.of(context).size.width * 0.5,
                     height: 100,
                     child: Bubble(
@@ -99,13 +99,14 @@ class _myPageState extends State<myPage> {
                         '저를 눌러서 \n필요한 기능들을 \n알려주세요!',
                         style: TextStyle(
                           fontSize: 30,
+                          fontFamily: "NanumB",
                           color: Colors.white,
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    color: Colors.white,
+                    color: HexColor("#f0fafc"),
                     width: MediaQuery.of(context).size.width * 0.5,
                     height: 180,
                   ),
@@ -116,7 +117,7 @@ class _myPageState extends State<myPage> {
                   _write();
                 },
                 child: Container(
-                  color: Colors.white,
+                  color: HexColor("#f0fafc"),
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 300,
                   child: Image.asset(
@@ -129,8 +130,8 @@ class _myPageState extends State<myPage> {
           ),
           Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.47,
-            color: Colors.grey[300],
+            height: MediaQuery.of(context).size.height * 0.475,
+            color: HexColor("#f0fafc"),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -147,7 +148,7 @@ class _myPageState extends State<myPage> {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[500]!,
+                            color: Colors.grey[300]!,
                             offset: Offset(4, 4),
                             blurRadius: 2,
                             spreadRadius: 1,
@@ -165,6 +166,7 @@ class _myPageState extends State<myPage> {
                           '건의사항 목록',
                           style: TextStyle(
                             fontSize: 20,
+                            fontFamily: "NanumEB",
                           ),
                         ),
                       ),
@@ -183,7 +185,7 @@ class _myPageState extends State<myPage> {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey[500]!,
+                            color: Colors.grey[300]!,
                             offset: Offset(4, 4),
                             blurRadius: 2,
                             spreadRadius: 1,
@@ -201,6 +203,7 @@ class _myPageState extends State<myPage> {
                           '학내 전화번호 목록',
                           style: TextStyle(
                             fontSize: 20,
+                            fontFamily: "NanumEB",
                           ),
                         ),
                       ),

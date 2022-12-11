@@ -70,6 +70,14 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  fonts:
+    - family: NanumB
+      fonts:
+        - asset: fonts/NanumSquareB.ttf
+    - family: NanumEB
+      fonts:
+        - asset: fonts/NanumSquareEB.ttf
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/img_killboong.png
