@@ -18,7 +18,7 @@ def clean_text(text):
     return cleaned_text
 
 #크롤링한 data를 dictionary에 append
-for page_num in range(3):
+for page_num in range(1):
     url=f'https://ece.cbnu.ac.kr/index.php?mid=ece0602&page={page_num+1}' 
     res=requests.get(url) #목표로 하는 웹페이지의 html을 requests 패키지를 이용하며 받아 옴
 

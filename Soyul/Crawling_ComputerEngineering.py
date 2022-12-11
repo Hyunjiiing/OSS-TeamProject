@@ -16,7 +16,7 @@ date=[]
 title=[]
 link=[]
 
-for page_num in range(45):
+for page_num in range(11):
     url=f'https://computer.chungbuk.ac.kr/bbs/bbs.php?db=notice&search=&searchKey=&category=0&pgID=ID12415888101&page={page_num+1}' 
     res=requests.get(url) 
 

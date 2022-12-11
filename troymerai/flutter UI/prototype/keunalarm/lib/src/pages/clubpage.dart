@@ -76,7 +76,14 @@ class clubPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Center(child: Text('컴퓨터 공학과\n  학과 동아리')),
+                    child: Center(
+                      child: Text(
+                        '컴퓨터 공학과\n  학과 동아리',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 GestureDetector(
@@ -105,7 +112,14 @@ class clubPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Center(child: Text('충북대학교\n중앙 동아리')),
+                    child: Center(
+                      child: Text(
+                        '충북대학교\n중앙 동아리',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
