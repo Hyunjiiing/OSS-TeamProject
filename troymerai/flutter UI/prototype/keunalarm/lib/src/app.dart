@@ -75,6 +75,7 @@ class App extends GetView<BottomNavController> {
           */
 
                 BottomNavigationBar(
+
                     //bottomnavigationbar에 있는 아이콘 안튀어오르게 함
                     type: BottomNavigationBarType.fixed,
                     //bottomnavigationbar에 있는 라벨 안보이게 함
