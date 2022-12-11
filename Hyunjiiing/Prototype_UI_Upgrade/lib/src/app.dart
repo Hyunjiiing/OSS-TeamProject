@@ -8,6 +8,7 @@ import 'package:keunalarm/src/pages/clubpage.dart';
 import 'package:keunalarm/src/pages/home.dart';
 import 'package:keunalarm/src/pages/mainpage.dart';
 import 'package:keunalarm/src/pages/mypage.dart';
+import 'components/color.dart';
 
 class App extends GetView<BottomNavController> {
   const App({super.key});
@@ -59,7 +60,6 @@ class App extends GetView<BottomNavController> {
               MainPage(),
               TableCalendarScreen(),
               clubPage(),
-              myPage(),
             ],
           ),
           bottomNavigationBar: SafeArea(
@@ -80,7 +80,7 @@ class App extends GetView<BottomNavController> {
                     //bottomnavigationbar에 있는 라벨 안보이게 함
                     showSelectedLabels: false,
                     showUnselectedLabels: false,
-                    selectedItemColor: Colors.grey,
+                    selectedItemColor: HexColor("#f0fafc"),
                     elevation: 0,
                     currentIndex: controller.pageIndex.value,
                     onTap: controller.changeBottomNav,
@@ -112,16 +112,6 @@ class App extends GetView<BottomNavController> {
                       ),
                       activeIcon: Icon(
                         CupertinoIcons.person_2_square_stack,
-                        color: Colors.black,
-                      ),
-                      label: ""),
-                  BottomNavigationBarItem(
-                      icon: Icon(
-                        CupertinoIcons.bars,
-                        //color: Colors.black,
-                      ),
-                      activeIcon: Icon(
-                        CupertinoIcons.bars,
                         color: Colors.black,
                       ),
                       label: ""),

@@ -54,26 +54,12 @@ class _firestoreCBNUScholarshipEvent
                     /** 이게 공지사항 페이지에 있는 박스 >>> 디자인은 여기서 바꿔야 함 */
 
                     Container(
-                  margin: EdgeInsets.fromLTRB(13, 13, 13, 8),
+                  margin: EdgeInsets.fromLTRB(10, 10, 3, 0.5),
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Colors.white54,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: Offset(4, 4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                    ],
                   ),
                   child: Expanded(
                     child: GestureDetector(

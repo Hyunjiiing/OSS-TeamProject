@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:keunalarm/src/components/firestore_event.dart';
+import '../../components/color.dart';
 
 class popularAlarm extends StatefulWidget {
   popularAlarm({super.key});
@@ -11,7 +12,7 @@ class _popularAlarmState extends State<popularAlarm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[300],
+      color: HexColor("#f0fafc"),
       height: MediaQuery.of(context).size.height * 0.7,
       child: fireStoreEvent(),
     );

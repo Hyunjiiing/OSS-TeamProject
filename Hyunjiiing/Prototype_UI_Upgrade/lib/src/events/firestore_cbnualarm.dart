@@ -56,22 +56,8 @@ class _firestoreCBNUEvent extends State<firestoreCBNUEvent> {
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
-                    color: Colors.white54,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey[500]!,
-                        offset: Offset(4, 4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-4, -4),
-                        blurRadius: 2,
-                        spreadRadius: 1,
-                      ),
-                    ],
                   ),
                   child: Expanded(
                     child: GestureDetector(

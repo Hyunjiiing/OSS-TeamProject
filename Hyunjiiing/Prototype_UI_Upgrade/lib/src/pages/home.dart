@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keunalarm/src/components/tabmenu.dart';
+import '../components/color.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,26 +24,23 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: HexColor("#f0fafc"),
       // 여기서 appbar 없애고 그냥 body에 몰빵해서 appbar느낌으로 ui 구현하면 됨
-
       body: Column(
         children: [
           Container(
             width: double.infinity,
             height: 50,
-            color: Colors.grey[300],
+            color: HexColor("#f0fafc"),
           ),
           Container(
             width: double.infinity,
             height: 40,
-            color: Colors.grey[300],
+            color: HexColor("#f0fafc"),
             child: Center(
               child: Text(
                 '공지사항 페이지',
-                style: TextStyle(
-                  fontSize: 30,
-                ),
+                style: TextStyle(fontSize: 30, fontFamily: "NanumEB"),
               ),
             ),
           ),

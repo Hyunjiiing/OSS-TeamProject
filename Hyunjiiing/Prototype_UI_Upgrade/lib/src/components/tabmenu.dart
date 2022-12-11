@@ -10,6 +10,7 @@ import 'package:keunalarm/src/pages/alarmpages/computerenginerringalarm.dart';
 import '../pages/alarmpages/CBNUscholarshipalarm.dart';
 import '../pages/alarmpages/cbnualarm.dart';
 import '../pages/alarmpages/ecealarm.dart';
+import '../components/color.dart';
 
 class tabMenu extends StatefulWidget {
   const tabMenu({super.key});
@@ -22,8 +23,8 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   late TabController tabController;
 
   List<String> items = [
-    "컴퓨터 공학과",
-    "소프트웨어 중심 사업단",
+    "컴퓨터공학과",
+    "SW중심사업단",
     "전자정보대학",
     "CBNU 장학",
     "CBNU 공지",
@@ -62,7 +63,8 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
       height: 50,
       child: Text(
         text,
-        style: TextStyle(fontSize: 15, color: Colors.black),
+        style:
+            TextStyle(fontSize: 20, color: Colors.black, fontFamily: "NanumEB"),
       ),
     );
   }
@@ -70,7 +72,7 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[300],
+      color: HexColor("#f0fafc"),
       margin: const EdgeInsets.all(5),
       width: double.infinity,
       height: double.infinity,
@@ -79,11 +81,12 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
           Container(
             width: double.infinity,
             height: 10,
-            color: Colors.grey[300],
+            color: HexColor("#f0fafc"),
+
             //Color(0xFFE7ECEF),
           ),
           Container(
-            color: Colors.grey[300],
+            color: HexColor("#f0fafc"),
             height: 60,
             width: double.infinity,
             child: ListView.builder(
@@ -106,42 +109,36 @@ class _tabMenuState extends State<tabMenu> with TickerProviderStateMixin {
                       milliseconds: 200,
                     ),
                     margin: EdgeInsets.fromLTRB(10, 10, 7, 7),
-                    width: 100,
+                    width: MediaQuery.of(context).size.width * 0.3,
                     height: 45,
                     decoration: BoxDecoration(
-                      color:
-                          current == index ? Color(0xffD3C9B5) : Colors.white54,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: current == index
-                          ? null
-                          : [
-                              BoxShadow(
-                                color: Colors.grey[500]!,
-                                offset: Offset(4, 4),
-                                blurRadius: 2,
-                                spreadRadius: 1,
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                offset: Offset(-4, -4),
-                                blurRadius: 2,
-                                spreadRadius: 1,
-                              ),
-                            ],
+                      color: current == index
+                          ? Colors.white
+                          : Color.fromARGB(104, 255, 255, 255),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(9, 8, 8, 8),
                       child: Center(
-                        child: AutoSizeText(
-                          items[index],
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: current == index
-                                ? Colors.black
-                                : Colors.grey[600],
+                          child: Row(
+                        children: [
+                          if (current == index)
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                            ),
+                          AutoSizeText(
+                            items[index],
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: "NanumEB",
+                              color: current == index
+                                  ? Colors.black
+                                  : Color.fromARGB(162, 117, 117, 117),
+                            ),
                           ),
-                        ),
-                      ),
+                        ],
+                      )),
                     ),
                   ),
                 );
