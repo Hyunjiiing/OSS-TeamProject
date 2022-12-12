@@ -78,3 +78,19 @@ def Crawling():
             
             notification(title)
             
+# 새로운 공지 저장
+def store_new_data(res, count):
+    for i in range(len(res)-1,-1,-1):
+        doc_ref = db.collection(u'sw7up').document(u'%04d' % count)
+        doc_ref.set({'title': res['title'][i], 
+        'date': res['date'][i],
+        'url': res['url'][i]})
+        count+=1
+            
+            
+               
+def main():
+    Crawling()
+         
+if __name__ == "__main__":
+	main()            
