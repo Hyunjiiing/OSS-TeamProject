@@ -36,7 +36,7 @@ final_date=[]
 final_link=[]
 
 
-for page_num in range(2):
+for page_num in range(20):
     url=f"https://www.chungbuk.ac.kr/site/www/boardList.do?page={1+page_num}&boardSeq=112&key=698"
     res=requests.get(url)
     soup = bs(res.text, "lxml")
@@ -88,6 +88,10 @@ for page_num in range(2):
         final_link.append(link[i])
     #Complete 링크
 
+reversed_title=final_title[::-1]
+reversed_date=final_date[::-1]
+reversed_link=final_link[::-1]
+
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -102,7 +106,7 @@ firebase_database = firestore.client()
 for i in range(len(final_title)):
     document=firebase_database.collection('CBNU_notice').document('%s'%str(i).zfill(4))
     document.set({
-        "title":final_title[i],
-        "link":final_link[i],
-        "date":final_date[i],
+        "title":reversed_title[i],
+        "link":reversed_link[i],
+        "date":reversed_date[i],
     })
