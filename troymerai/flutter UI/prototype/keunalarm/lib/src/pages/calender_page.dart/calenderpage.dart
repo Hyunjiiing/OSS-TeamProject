@@ -4,6 +4,8 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:keunalarm/src/components/firestore_event.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 import 'dart:math';
 
 import '../../components/color.dart';
@@ -51,6 +53,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting(Localizations.localeOf(context).languageCode);
     getData();
     getCalendarData();
 
@@ -93,14 +96,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: HexColor("#f0fafc"),
-          title: Center(
-              child: Text(
-            '학사일정',
-            style: TextStyle(
-                fontSize: 25,
-                fontFamily: "NanumEB",
-                fontWeight: FontWeight.bold),
-          )),
+          toolbarHeight: 10,
           elevation: 0,
         ),
         body: Container(
@@ -111,13 +107,15 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.48,
-                margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                height: MediaQuery.of(context).size.height * 0.58,
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(30),
                 ),
                 child: TableCalendar(
+                  locale: 'ko-KR',
+                  daysOfWeekHeight: 20,
                   daysOfWeekStyle: DaysOfWeekStyle(
                       weekdayStyle: TextStyle(
                         color: Color(0xff30384c),
@@ -226,12 +224,12 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
               Container(
                 color: HexColor("#f0fafc"),
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.30,
+                height: MediaQuery.of(context).size.height * 0.27,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                        margin: const EdgeInsets.fromLTRB(10, 30, 10, 15),
                         // padding: const EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                             boxShadow: [
@@ -266,7 +264,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
                         ),
                       ),
                       Container(
-                          margin: const EdgeInsets.fromLTRB(30, 10, 30, 0),
+                          margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
 
                           // padding: const EdgeInsets.all(10.0),
                           decoration: BoxDecoration(
