@@ -87,7 +87,9 @@ for page_num in range(28):
         final_link.append(link[i])
     #Complete 링크
 
-
+reversed_title=final_title[::-1]
+reversed_date=final_date[::-1]
+reversed_link=final_link[::-1]
 
 import firebase_admin
 from firebase_admin import credentials
@@ -103,7 +105,7 @@ firebase_database = firestore.client()
 for i in range(len(final_title)):
     document=firebase_database.collection('CBNU_scholarship').document('%s'%str(i).zfill(4))
     document.set({
-        "title":final_title[i],
-        "link":final_link[i],
-        "date":final_date[i],
+        "title":reversed_title[i],
+        "link":reversed_link[i],
+        "date":reversed_date[i],
     })
