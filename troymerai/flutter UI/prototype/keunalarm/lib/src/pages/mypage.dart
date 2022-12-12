@@ -76,7 +76,7 @@ class _myPageState extends State<myPage> {
         children: [
           Container(
             width: double.infinity,
-            height: 75,
+            height: MediaQuery.of(context).size.height * 0.07,
             color: HexColor("#f0fafc"),
           ),
           Row(
@@ -86,7 +86,7 @@ class _myPageState extends State<myPage> {
                   Container(
                     color: HexColor("#f0fafc"),
                     width: MediaQuery.of(context).size.width * 0.5,
-                    height: 100,
+                    height: MediaQuery.of(context).size.height * 0.15,
                     child: Bubble(
                       alignment: Alignment.center,
                       color: Colors.blue,
@@ -108,7 +108,7 @@ class _myPageState extends State<myPage> {
                   Container(
                     color: HexColor("#f0fafc"),
                     width: MediaQuery.of(context).size.width * 0.5,
-                    height: 180,
+                    height: MediaQuery.of(context).size.height * 0.23,
                   ),
                 ],
               ),
@@ -119,7 +119,7 @@ class _myPageState extends State<myPage> {
                 child: Container(
                   color: HexColor("#f0fafc"),
                   width: MediaQuery.of(context).size.width * 0.5,
-                  height: 300,
+                  height: MediaQuery.of(context).size.height * 0.38,
                   child: Image.asset(
                     "assets/images/img_studyboong.png",
                     width: MediaQuery.of(context).size.width * 0.46,

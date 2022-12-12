@@ -111,7 +111,7 @@ class _TableCalendarScreenState extends State<TableCalendarScreen> {
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.5,
+                height: MediaQuery.of(context).size.height * 0.48,
                 margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                 decoration: BoxDecoration(
                   color: Colors.white,

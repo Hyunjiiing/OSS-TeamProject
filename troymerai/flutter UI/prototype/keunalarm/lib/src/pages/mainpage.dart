@@ -15,7 +15,7 @@ class MainPage extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 50,
+            height: MediaQuery.of(context).size.height * 0.05,
           ),
           Row(
             children: [
@@ -31,7 +31,7 @@ class MainPage extends StatelessWidget {
           Container(
             margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.32,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -213,7 +213,7 @@ class MainPage extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.fromLTRB(7, 5, 7, 5),
               width: double.infinity,
-              height: 100,
+              height: MediaQuery.of(context).size.height * 0.1,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
