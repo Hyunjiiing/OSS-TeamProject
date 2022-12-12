@@ -56,7 +56,9 @@ for i in date_real:
     i=i.translate(table)
     date_default.append(i)
 
-
+reversed_title=title[::-1]
+reversed_date=date_default[::-1]
+reversed_link=link[::-1]
 
 import firebase_admin
 from firebase_admin import credentials
@@ -72,7 +74,7 @@ firebase_database = firestore.client()
 for i in range(len(title)):
     document=firebase_database.collection('ComputerEngineering_notice').document('%s'%str(i).zfill(4))
     document.set({
-        "title":title[i],
-        "link":link[i],
-        "date":date_default[i],
+        "title":reversed_title[i],
+        "link":reversed_link[i],
+        "date":reversed_date[i],
     })

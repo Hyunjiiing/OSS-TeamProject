@@ -17,7 +17,7 @@ class clubPage extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 40,
+            height: MediaQuery.of(context).size.height * 0.04,
           ),
           Container(
             width: double.infinity,
@@ -58,8 +58,7 @@ class clubPage extends StatelessWidget {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
-                    height: 180,
-                    // color: Colors.white,
+                    height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.circular(10),
@@ -95,8 +94,7 @@ class clubPage extends StatelessWidget {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.4,
-                    height: 180,
-                    //  color: Colors.white,
+                    height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
                       color: Colors.white54,
                       borderRadius: BorderRadius.circular(10),
